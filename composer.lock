@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a884f70d04984ff48bce71253e7b273c",
-    "content-hash": "b5a27c7025bd9fff0432cbdcfbe4cac0",
+    "hash": "1bee67a5503a7fcb3a7bf477e91caacd",
+    "content-hash": "c9181fc03631af2b7cc1d6a73e7be383",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -60,6 +60,45 @@
                 "webprofiler"
             ],
             "time": "2016-07-29 15:00:36"
+        },
+        {
+            "name": "bestmomo/nice-artisan",
+            "version": "v0.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bestmomo/nice-artisan.git",
+                "reference": "9d3369cfd728c532f9713ce9be2a90d0afb6d665"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bestmomo/nice-artisan/zipball/9d3369cfd728c532f9713ce9be2a90d0afb6d665",
+                "reference": "9d3369cfd728c532f9713ce9be2a90d0afb6d665",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.1",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bestmomo\\NiceArtisan\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bestmomo",
+                    "email": "grandheretique@free.fr",
+                    "homepage": "http://laravel.sillo.org"
+                }
+            ],
+            "description": "Web interface for Laravel Artisan",
+            "homepage": "http://github.com/bestmomo/nice-artisan",
+            "time": "2016-08-27 20:45:14"
         },
         {
             "name": "caouecs/laravel-lang",

@@ -24,3 +24,8 @@ Route::post('users', 'UsersController@postInfos');
 
 Route::get('contact', 'ContactController@getForm');
 Route::post('contact', 'ContactController@postForm');
+
+Route::get('email', 'EmailController@getForm');
+Route::post('email', ['uses' => 'EmailController@postForm', 'as' => 'storeEmail']);
+
+Route::resource('user','UserController');
