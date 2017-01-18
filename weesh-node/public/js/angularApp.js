@@ -1,7 +1,10 @@
 angular.module('flapperNews', ['ui.router']).config([
 '$stateProvider'
 , '$urlRouterProvider'
-, function ($stateProvider, $urlRouterProvider) {
+
+
+    
+    , function ($stateProvider, $urlRouterProvider) {
         $stateProvider.state('home', {
             url: '/home'
             , templateUrl: '/home.html'
@@ -23,6 +26,15 @@ angular.module('flapperNews', ['ui.router']).config([
         }).state('login', {
             url: '/login'
             , templateUrl: '/login.html'
+            , controller: 'AuthCtrl'
+            , onEnter: ['$state', 'auth', function ($state, auth) {
+                if (auth.isLoggedIn()) {
+                    $state.go('home');
+                }
+      }]
+        }).state('mylists', {
+            url: '/mylists'
+            , templateUrl: 'weesh-node/views/mylists.ejs'
             , controller: 'AuthCtrl'
             , onEnter: ['$state', 'auth', function ($state, auth) {
                 if (auth.isLoggedIn()) {
@@ -129,34 +141,15 @@ angular.module('flapperNews', ['ui.router']).config([
         }
     };
     return auth;
-}]).controller('MainCtrl', [
-'$scope'
-, 'posts'
-, 'auth'
-, function ($scope, posts, auth) {
-        $scope.test = 'Hello world!';
-        $scope.posts = posts.posts;
-        $scope.isLoggedIn = auth.isLoggedIn;
-        $scope.addPost = function () {
-            if ($scope.title === '') {
-                return;
-            }
-            posts.create({
-                title: $scope.title
-                , link: $scope.link
-            , });
-            $scope.title = '';
-            $scope.link = '';
-        };
-        $scope.incrementUpvotes = function (post) {
-            posts.upvote(post);
-        };
 }]).controller('PostsCtrl', [
 '$scope'
 , 'posts'
 , 'post'
 , 'auth'
-, function ($scope, posts, post, auth) {
+
+
+    
+    , function ($scope, posts, post, auth) {
         $scope.post = post;
         $scope.isLoggedIn = auth.isLoggedIn;
         $scope.addComment = function () {
@@ -178,7 +171,10 @@ angular.module('flapperNews', ['ui.router']).config([
 '$scope'
 , '$state'
 , 'auth'
-, function ($scope, $state, auth) {
+
+
+    
+    , function ($scope, $state, auth) {
         $scope.user = {};
         $scope.register = function () {
             auth.register($scope.user).error(function (error) {
@@ -197,7 +193,10 @@ angular.module('flapperNews', ['ui.router']).config([
 }]).controller('NavCtrl', [
 '$scope'
 , 'auth'
-, function ($scope, auth) {
+
+
+    
+    , function ($scope, auth) {
         $scope.isLoggedIn = auth.isLoggedIn;
         $scope.currentUser = auth.currentUser;
         $scope.logOut = auth.logOut;

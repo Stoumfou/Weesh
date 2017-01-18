@@ -46,9 +46,6 @@
     <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-touch-icon-144x144.png">
     <!-- Head Libs -->
     <script src="vendor/modernizr.js"></script>
-    <script>
-        document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
-    </script>
     <!--[if IE]>
 			<link rel="stylesheet" href="css/ie.css">
 		<![endif]-->
@@ -66,7 +63,7 @@
 		-->
 </head>
 
-<body ng-app="weesh">
+<body ng-app="flapperNews">
     <div class="body">
         <header>
             <div class="container">
@@ -111,8 +108,8 @@
                     <hr class="tall" />
                     <form>
                         <div class="row controls">
-                            <div ng-controller="MainController" class="span6 control-group">
-                                <label>Votre {{name}}</label>
+                            <div ng-controller="mainController" class="span6 control-group">
+                                <label>Votre {{test}}</label>
                                 <input type="text" value="" maxlength="100" class="span3"> </div>
                             <div class="span6 control-group">
                                 <label>Votre email</label>
