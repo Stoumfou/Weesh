@@ -1,6 +1,7 @@
 var express = require('express');
 var jwt = require('express-jwt');
 var router = express.Router();
+var consts = require('../config/consts.js');
 var auth = jwt({ secret: process.env.WEESH_TOKEN_SIGN, userProperty: 'payload' }); // WEESH_TOKEN_SIGN est une variable d'environnement
 
 var mongoose = require('mongoose');

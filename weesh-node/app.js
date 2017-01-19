@@ -11,6 +11,7 @@ mongoose.connect('mongodb://localhost/weesh');
 
 require('./models/Products');
 require('./models/Users');
+
 require('./config/passport');
 
 var index = require('./routes/index');
