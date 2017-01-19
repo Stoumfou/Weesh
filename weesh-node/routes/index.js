@@ -1,12 +1,50 @@
 var express = require('express');
+var jwt = require('express-jwt');
 var router = express.Router();
+var auth = jwt({ secret: process.env.WEESH_TOKEN_SIGN, userProperty: 'payload' }); // WEESH_TOKEN_SIGN est une variable d'environnement
 
 var mongoose = require('mongoose');
+var passport = require('passport');
 var Product = mongoose.model('Product');
+var User = mongoose.model('User');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'Express' });
+});
+
+// Inscrit un utilisateur
+router.post('/register', function(req, res, next) {
+    if (!req.body.username || !req.body.password) {
+        return res.status(400).json({ message: 'Nom d\'utilisateur ou mot de passe manquant.' });
+    }
+
+    var user = new User();
+    user.username = req.body.username;
+    user.setPassword(req.body.password);
+
+    user.save(function (err) {
+        if (err) { return next(err); }
+
+        return res.json({ token: user.generateJWT() })
+    });
+});
+
+// Connecte un utilisateur
+router.post('/login', function(req, res, next) {
+    if (!req.body.username || !req.body.password) {
+        return res.status(400).json({ message: 'Nom d\'utilisateur ou mot de passe manquant.' });
+    }
+
+    passport.authenticate('local', function(err, user, info) {
+        if (err) { return next(err); }
+
+        if (user) {
+            return res.json({ token: user.generateJWT() });
+        } else {
+            return res.status(401).json(info);
+        }
+    })(req, res, next);
 });
 
 // Renvoie la liste des produits
