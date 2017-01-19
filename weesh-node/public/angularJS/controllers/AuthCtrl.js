@@ -21,4 +21,4 @@ angular.module('weesh').controller('AuthCtrl', [
                 });
             };
         }
-    ])
+    ]);
