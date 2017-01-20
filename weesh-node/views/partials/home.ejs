@@ -1,0 +1,50 @@
+<script type="text/ng-template" id="/home.ejs">
+    <div id="content" class="content full" ng-controller="MainCtrl">
+        <div class="home-intro">
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <div class="span12">
+                        <p>"Make your <em>Weesh </em> come true"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row center bloc">
+            <p class="span12"> Vous n'êtes pas connecté, veuillez vous identifiez pour utiliser Weesh.</p>
+            <div class="span7">
+                <div> <a href="/#/login" class="btn btn-large btn-primary">Connexion</a> </div>
+            </div>
+            <div class="span4">
+                <div> <a href="/#/register" class="btn btn-large btn-primary">Créer un compte</a> </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row bloc"> <i class="icon-cog user"><span class="content iconText">Vos paramètres</span></i>
+            <hr class="tall" />
+            <form>
+                <div class="row controls">
+                    <div class="span6 control-group">
+                        <label>Votre {{test}}</label>
+                        <input type="text" value="" maxlength="100" class="span3"> </div>
+                    <div class="span6 control-group">
+                        <label>Votre email</label>
+                        <input type="text" value="" maxlength="100" class="span3"> </div>
+                </div>
+                <div class="row controls">
+                    <div class="span6 control-group">
+                        <label>Mot de passe</label>
+                        <input type="text" value="" maxlength="100" class="span3"> </div>
+                </div>
+                <div class="row controls">
+                    <div class="span6 control-group">
+                        <label>Adresse</label>
+                        <input type="text" value="" maxlength="100" class="span3"> </div>
+                </div>
+                <div> <a href="#" class="btn btn-large btn-primary">Confirmer</a> </div>
+            </form>
+        </div>
+    </div>
+</script>
