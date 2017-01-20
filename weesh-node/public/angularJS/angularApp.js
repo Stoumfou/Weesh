@@ -1,1 +1,1 @@
-angular.module('weesh', ['ui.router']);
+angular.module('weesh', ['ui.router', 'ngMaterial']);
