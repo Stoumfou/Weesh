@@ -20,7 +20,7 @@ angular.module('weesh').config([
                     }]
         }).state('myLists', {
             url: '/myLists'
-            , templateUrl: '/myLists.ejs'
+            , templateUrl: '/partials/myLists.ejs'
             , controller: 'AuthCtrl'
             , onEnter: ['$state', 'auth', function ($state, auth) {
                 if (auth.isLoggedIn()) {
@@ -29,7 +29,7 @@ angular.module('weesh').config([
                     }]
         }).state('mySettings', {
             url: '/mySettings'
-            , templateUrl: '/mySettings.ejs'
+            , templateUrl: '/partials/mySettings.ejs'
             , controller: 'AuthCtrl'
             , onEnter: ['$state', 'auth', function ($state, auth) {
                 if (auth.isLoggedIn()) {
@@ -38,7 +38,7 @@ angular.module('weesh').config([
                     }]
         }).state('myProducts', {
             url: '/myProducts'
-            , templateUrl: '/myProducts.ejs'
+            , templateUrl: '/partials/myProducts.ejs'
             , controller: 'AuthCtrl'
             , onEnter: ['$state', 'auth', function ($state, auth) {
                 if (auth.isLoggedIn()) {
@@ -47,7 +47,7 @@ angular.module('weesh').config([
                     }]
         }).state('register', {
             url: '/register'
-            , templateUrl: '/register.ejs'
+            , templateUrl: '/partials/register.ejs'
             , controller: 'AuthCtrl'
             , onEnter: ['$state', 'auth', function ($state, auth) {
                 if (auth.isLoggedIn()) {
