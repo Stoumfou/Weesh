@@ -7,7 +7,7 @@ angular.module('weesh').config([
     , function ($stateProvider, $urlRouterProvider) {
         $stateProvider.state('home', {
             url: '/home'
-            , templateUrl: '/home.ejs'
+            , templateUrl: '/partials/home.ejs'
             , controller: 'MainCtrl'
         }).state('login', {
             url: '/login'
