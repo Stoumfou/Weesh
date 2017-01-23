@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 
+mongoose.Promise = global.Promise; // Permet d'éliminer le warning de dépréciation du module Prommise sur un save
+
 mongoose.connect('mongodb://localhost/weesh');
 
 require('./models/Products');

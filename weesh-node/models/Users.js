@@ -3,9 +3,13 @@ var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
 
 var UserSchema = new mongoose.Schema({
-    username: { type: String, lowercase: true, unique: true },
-    hash: String,
-    salt: String
+    username: {
+        type: String,
+        unique: true, // Ce champ assure un index unique, pas un document unique (cf. la fonction de validation de username ci-dessous)
+        required: [ true, 'User username is missing.' ]
+    },
+    hash: { type: String, required: true },
+    salt: { type: String, required: true }
 });
 
 UserSchema.methods.setPassword = function(password) {
@@ -31,4 +35,15 @@ UserSchema.methods.generateJWT = function() {
     }, process.env.WEESH_TOKEN_SIGN); // WEESH_TOKEN_SIGN est une variable d'environnement
 };
 
-mongoose.model('User', UserSchema);
+var User = mongoose.model('User', UserSchema);
+
+User.schema.path('username').validate(function(value, next) {
+    User.findOne({'username': value}, function(err, user) {
+        if (err) {
+            return next(err);
+        }
+        // Si un utilisateur avec ce username existe déjà, on retourne false
+        // (car le username doit être unique), sinon true
+        return next(!user);
+    });
+}, 'User username already exist.', 'Duplicate username');
