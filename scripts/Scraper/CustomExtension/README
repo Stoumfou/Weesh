@@ -1,0 +1,1 @@
+NB : le fichier index.js contient le code de product-scraper modifié pour nos besoins. Il est maintenu à jour dans ce répertoire au cas où nous le mettons à jour avec npm install, afin de ne pas perdre nos changements.

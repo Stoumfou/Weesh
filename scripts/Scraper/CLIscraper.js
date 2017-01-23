@@ -25,7 +25,7 @@ function parse(){
             }
 
             // /!\ 8 AU HASARD /!\
-            fs.writeFile(outputPath + "/" + val.substr(val.length - 8), JSON.stringify(data), function(err) {
+            fs.writeFile(outputPath + "/" + selectID(val, data), JSON.stringify(data), function(err) {
               if(err) {
                 return console.log(err);
               }
@@ -51,6 +51,18 @@ function extractDomain(url) {
         return sub
     }
     return parts[lenparts - 2] + "." + parts[lenparts - 1];
+}
+
+function selectID(url, data){
+  var site = extractDomain(url);
+  switch(site){
+    case "amazon.com":
+      return data.id;
+    case "fnac.com":
+      return data.id;
+    case "bestbuy.com":
+      return data.id;
+  }
 }
 
 parse();
