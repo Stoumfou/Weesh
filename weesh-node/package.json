@@ -19,10 +19,12 @@
     "express-jwt": "^5.1.0",
     "font-awesome": "^4.7.0",
     "jsonwebtoken": "^7.2.1",
+    "line-navigator": "^2.1.5",
     "mongoose": "^4.7.7",
     "morgan": "~1.7.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
+    "product-scraper": "^0.1.1",
     "serve-favicon": "~2.3.0"
   }
 }

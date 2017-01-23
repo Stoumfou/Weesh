@@ -36,6 +36,10 @@ app.use('/plugin', express.static(__dirname + '/node_modules/'));
 
 app.use(passport.initialize());
 
+app.use('/partials/:name', function (req, res) {
+  var name = req.params.name;
+  res.render('partials/' + name);
+});
 app.use('/', index);
 app.use('/users', users);
 

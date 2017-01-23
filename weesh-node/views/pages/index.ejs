@@ -4,14 +4,13 @@
 <!--[if gt IE 9]><!-->
 <html>
 <!--<![endif]-->
-
 <head>
     <% include ../partials/head %>
 </head>
 
 <body ng-app="weesh">
     <div class="body">
-        <header>
+        <header id="header" class="header-narrow" data-plugin-options='{"stickyEnabled": true, "stickyEnableOnBoxed": true, "stickyEnableOnMobile": true, "stickyStartAt": 57, "stickySetTop": "-57px", "stickyChangeLogo": false}'>
             <% include ../partials/header %>
         </header>
         <div role="main" class="main">
@@ -20,12 +19,6 @@
         <footer>
             <% include ../partials/footer %>
         </footer>
-        <% include ../partials/home %>
-            <% include ../partials/register %>
-                <% include ../partials/myLists %>
-                    <% include ../partials/myProducts %>
-                        <% include ../partials/mySettings %>
-<% include ../partials/404 %>    </div>
+    </div>
 </body>
-
 </html>

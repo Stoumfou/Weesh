@@ -4,7 +4,7 @@
  *
  * Licensed under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
- * 
+ *
  * Copyright 2013, Codrops
  * http://www.codrops.com
  */
@@ -150,12 +150,12 @@
 		// default transition speed (ms)
 		speed : 700,
 		// default transition easing
-		easing : 'cubic-bezier(.29,1.44,.86,1.06)'
+		easing : 'ease-out'
 	};
 
 	$.Flipshow.prototype = {
 		_init : function( options ) {
-			
+
 			// options
 			this.options = $.extend( true, {}, $.Flipshow.defaults, options );
 			// support for CSS Transitions & 3D transforms
@@ -206,8 +206,8 @@
 		_addNav : function() {
 
 			var self = this,
-				$navLeft = $( '<div class="fc-left"><span></span><span></span><span></span><i class="icon-arrow-left"></i></div>' ),
-				$navRight = $( '<div class="fc-right"><span></span><span></span><span></span><i class="icon-arrow-right"></i></div>' );
+				$navLeft = $( '<div class="fc-left"><span></span><span></span><span></span><i class="fa fa-arrow-left"></i></div>' ),
+				$navRight = $( '<div class="fc-right"><span></span><span></span><span></span><i class="fa fa-arrow-right"></i></div>' );
 
 			$( '<nav></nav>' ).append( $navLeft, $navRight ).appendTo( this.$el );
 
@@ -235,7 +235,7 @@
 				return false;
 			}
 			this.isAnimating = true;
-			
+
 			var $currentItem = this.$items.eq( this.current ).hide();
 
 			if( dir === 'right' ) {
@@ -251,19 +251,23 @@
 				this._flip( $currentItem, $nextItem, dir, $nav.index() );
 			}
 			else {
-				$nextItem.show();				
+				$nextItem.show();
 			}
 
 		},
 		_flip : function( $currentItem, $nextItem, dir, angle ) {
-			
+
 			var transformProperties = '',
 				// overlays
 				$overlayLight = $( '<div class="fc-overlay-light"></div>' ),
 				$overlayDark = $( '<div class="fc-overlay-dark"></div>' );
 
+			if(typeof this.$flipEl == 'undefined') {
+				return;
+			}
+
 			this.$flipEl.css( 'transition', this.transitionProperties );
-			
+
 			this.$flipFront.find( 'div.fc-overlay-light, div.fc-overlay-dark' ).remove();
 			this.$flipBack.find( 'div.fc-overlay-light, div.fc-overlay-dark' ).remove();
 
@@ -292,7 +296,7 @@
 					transformProperties = dir === 'left' ? 'rotate3d(1,1,0,-179deg) rotate3d(1,1,0,-1deg)' : 'rotate3d(-1,1,0,179deg) rotate3d(-1,1,0,1deg)';
 					break;
 			}
-		
+
 			this.$flipBack.css( 'transform', transformProperties );
 
 			this.$frontContent.empty().html( $currentItem.html() );
@@ -301,7 +305,7 @@
 
 			var self = this;
 			setTimeout( function() {
-				
+
 				self.$flipEl.css( 'transform', transformProperties );
 				$overlayLight.css( 'opacity', dir === 'right' ? 1 : 0 );
 				$overlayDark.css( 'opacity', dir === 'right' ? 0 : 1 );
@@ -345,9 +349,9 @@
 				}
 				instance[ options ].apply( instance, args );
 			});
-		} 
+		}
 		else {
-			this.each(function() {	
+			this.each(function() {
 				var instance = $.data( this, 'flipshow' );
 				if ( instance ) {
 					instance._init();
