@@ -31,8 +31,15 @@ curl -H 'Content-Type: application/json' -d "$data" http://localhost:3000/produc
 echo -e "\n* Adding new user *\n"
 
 data='{'
-data+='"username":"SpongeBob"'
+data+='"username":"SpongeBob99"'
 data+=',"password":"bikini"'
+data+=',"firstName":"SpongeBob"'
+data+=',"lastName":"SquarePants"'
+data+=',"gender":"M"'
+data+=',"birthDate":"01-05-1999"'
+data+=',"address":'
+data+='[{"street":"1st Pineapple Street","city":"Bikini Bottom","zip":"1339"}]'
+data+=',"email":"sponge.bob@gmail.com"'
 data+='}'
 
 curl -H 'Content-Type: application/json' -d "$data" http://localhost:3000/register
@@ -41,8 +48,32 @@ curl -H 'Content-Type: application/json' -d "$data" http://localhost:3000/regist
 echo -e "\n* Adding new user *\n"
 
 data='{'
-data+='"username":"Patrick"'
+data+='"username":"Patrick5"'
 data+=',"password":"Star"'
+data+=',"firstName":"Patrick"'
+data+=',"lastName":"Star"'
+data+=',"gender":"M"'
+data+=',"birthDate":"02-12-1999"'
+data+=',"address":'
+data+='[{"street":"2nd Rock Street","city":"Bikini Bottom","zip":"1339"}]'
+data+=',"email":"patrick.star@gmail.com"'
+data+='}'
+
+curl -H 'Content-Type: application/json' -d "$data" http://localhost:3000/register
+
+# Ajouter un utilisateur
+echo -e "\n* Adding new user *\n"
+
+data='{'
+data+='"username":"Sandy"'
+data+=',"password":"squirrel"'
+data+=',"firstName":"Sandra"'
+data+=',"lastName":"Cheeks"'
+data+=',"gender":"F"'
+data+=',"birthDate":"05-30-1999"'
+data+=',"address":'
+data+='[{"street":"3rd Bubble Dome","city":"Bikini Bottom","zip":"1339"}]'
+data+=',"email":"sandra.cheeks@gmail.com"'
 data+='}'
 
 curl -H 'Content-Type: application/json' -d "$data" http://localhost:3000/register
@@ -55,5 +86,6 @@ curl http://localhost:3000/products
 # Afficher tous les utilisateurs
 echo -e "\n* Displaying all users *\n"
 
-mongo weesh --eval "db.users.find({});"
+#mongo weesh --eval "db.users.find({});"
+curl http://localhost:3000/users
 
