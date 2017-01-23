@@ -2,6 +2,7 @@ var scraper = require('product-scraper');
 var request = require('request');
 var cheerio = require('cheerio');
 var fs = require('fs');
+var path = require('path');
 
 // Code exemple
 
@@ -16,7 +17,7 @@ function parse(){
       console.log(index + ': ' + val);
       if(val.includes("http")){
         scraper.init(val, function(data){
-            var outputPath = "/home/admean/test-scrapper/Sites/" + extractDomain(val);
+            var outputPath = path.join(__dirname, "/Sites/") + extractDomain(val);
             console.log(outputPath);
             // On crée un dossier pour stocker chaque domaine différent
             if(!fs.existsSync(outputPath)){
