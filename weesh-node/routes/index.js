@@ -20,8 +20,8 @@ router.post('/register', function(req, res, next) {
         return res.status(400).json({ message: 'Nom d\'utilisateur ou mot de passe manquant.' });
     }
 
-    var user = new User();
-    user.username = req.body.username;
+    // La date doit être au format MM-JJ-YYY
+    var user = new User(req.body);
     user.setPassword(req.body.password);
 
     user.save(function (err) {
@@ -46,6 +46,19 @@ router.post('/login', function(req, res, next) {
             return res.status(401).json(info);
         }
     })(req, res, next);
+});
+
+// Renvoie la liste des utilisateurs
+// Note : une date locale est automatiquement enregistrée en UTC dans la base Mongo
+// Lorsque l'on récupère une date de la base, elle est en UTC, mais .toString() la convertit en heure locale
+router.get('/users', function(req, res, next) {
+    User.find(function(err, users){
+        if (err) {
+            return next(err);
+        }
+
+        res.json(users);
+    });
 });
 
 // Renvoie la liste des produits
