@@ -26,6 +26,7 @@ h2 {
 }
 
 h3 {
+<<<<<<< Updated upstream
 	font-size: 1.8em;
 	font-weight: 400;
 	letter-spacing: normal;
@@ -49,6 +50,33 @@ h5 {
 	line-height: 18px;
 	margin: 0 0 14px 0;
 	text-transform: uppercase;
+=======
+    color: #777;
+    font-size: 1.8em;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 24px;
+    margin-bottom: 33px;
+    text-transform: uppercase;
+}
+
+h4 {
+    color: #777;
+    font-size: 1.4em;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 27px;
+    margin: 0 0 14px 0;
+}
+
+h5 {
+    color: #777;
+    font-size: 1em;
+    font-weight: bold;
+    letter-spacing: normal;
+    line-height: 18px;
+    margin: 0 0 14px 0;
+>>>>>>> Stashed changes
 }
 
 h6 {

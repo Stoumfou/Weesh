@@ -49,12 +49,12 @@ header {
 }
 
 #header .container {
-    position: relative;
+    position: block;
 }
 
 #header .header-container {
     position: relative;
-    display: table;
+    display: block;
 }
 
 #header .header-row {

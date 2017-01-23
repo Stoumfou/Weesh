@@ -11,34 +11,39 @@
         </div>
     </div>
     <div class="container">
-        <div class="row center bloc"> <i class="icon-user user"><span class="content iconText">{{user.name}}</span></i>
+        <div class="row center bloc"> <i class="fa fa-user user"><span class="content iconText">{{user.name}}</span></i>
             <hr class="tall" />
             <h4 class="span12">Bienvenue sur votre espace {{user.name}}</h4> </div>
     </div>
     <div class="container">
-        <div class="row bloc"> <i class="icon-cog user"><span class="content iconText">Vos paramètres</span></i>
+        <div class="row bloc"> <i class="fa fa-cog user"><span class="content iconText">Vos paramètres</span></i>
             <hr class="tall" />
-            <form>
-                <div class="row controls">
-                    <div class="span6 control-group">
-                        <label>Votre nom</label>
-                        <input type="text" value="" maxlength="100" class="span3"> </div>
-                    <div class="span6 control-group">
-                        <label>Votre email</label>
-                        <input type="text" value="" maxlength="100" class="span3"> </div>
-                </div>
-                <div class="row controls">
-                    <div class="span6 control-group">
-                        <label>Mot de passe</label>
-                        <input type="text" value="" maxlength="100" class="span3"> </div>
-                </div>
-                <div class="row controls">
-                    <div class="span6 control-group">
-                        <label>Adresse</label>
-                        <input type="text" value="" maxlength="100" class="span3"> </div>
-                </div>
-                <div> <a href="#" class="btn btn-large btn-primary">Confirmer</a> </div>
-            </form>
+            <md-content layout-padding>
+                <form name="projectForm">
+                    <md-input-container class="md-block">
+                        <label>User Name</label>
+                        <input required name="userName" ng-model="user.name">
+                        <div ng-messages="projectForm.userName.$error">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Email</label>
+                        <input required type="email" name="userEmail" ng-model="user.email" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+                        <div ng-messages="projectForm.userEmail.$error" role="alert">
+                            <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']"> Your email must be between 10 and 100 characters long and should be a valid email address. </div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Addresse</label>
+                        <input name="adress" ng-model="user.address"> </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Date de naissance</label>
+                        <md-datepicker ng-model="user.birthDate"></md-datepicker>
+                    </md-input-container>
+                    <md-button type="submit" class="md-primary .btn-orange" ng-class="{'md-raised md-hue-1': (contactForm.$dirty && contactForm.$valid) }" aria-label="Save Project">Confirmer</md-button>
+                </form>
+            </md-content>
         </div>
     </div>
-    </scipt>
+</script>

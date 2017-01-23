@@ -596,9 +596,7 @@ window.theme = {};
             }, 500);
         }
         , matchProperties: function () {
-            var i
-                , l
-                , properties;
+            var i, l, properties;
             properties = [
 				'backgroundColor'
 				, 'borderRadius'
@@ -614,14 +612,9 @@ window.theme = {};
             if (!backgroundColor || backgroundColor === 'transparent' || backgroundColor === 'inherit') {
                 return 'black';
             }
-            var hexColor
-                , r
-                , g
-                , b
-                , yiq;
+            var hexColor, r, g, b, yiq;
             var colorToHex = function (color) {
-                var hex
-                    , rgb;
+                var hex, rgb;
                 if (color.indexOf('#') > -1) {
                     hex = color.replace('#', '');
                 }
@@ -845,9 +838,7 @@ window.theme = {};
         , build: function () {
             var self = this
                 , $window = $(window)
-                , offset
-                , yPos
-                , bgpos;
+                , offset, yPos, bgpos;
             self.options.wrapper.css('background-image', 'url(' + self.options.wrapper.data('image-src') + ')');
             if (!$.browser.mobile) {
                 $window.on('scroll resize', function () {
@@ -2173,6 +2164,7 @@ window.theme = {};
                         , logoSmallTop = parseInt($logo.attr('data-sticky-top') ? $logo.attr('data-sticky-top') : 0)
                         , logoSmallWidth = parseInt($logo.attr('data-sticky-width') ? $logo.attr('data-sticky-width') : 'auto')
                         , logoSmallHeight = parseInt($logo.attr('data-sticky-height') ? $logo.attr('data-sticky-height') : 'auto');
+                    console.log(logoHeight);
                     if (self.options.stickyChangeLogoWrapper) {
                         $logoWrapper.css({
                             'width': $logo.outerWidth(true)
