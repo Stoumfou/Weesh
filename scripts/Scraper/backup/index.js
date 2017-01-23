@@ -91,6 +91,7 @@ exports.sites = {
 		productSelector.title = 'meta[property="og:title"]@content';
 		productSelector.original_price = '.oldPrice';
 		productSelector.price = '.product-price';
+		productSelector.brand = 'span[itemprop="manufacturer"]';
 		productSelector.details = x(['.whiteContent > ul > li']);
 		productSelector.description = 'meta[property="og:description"]@content';
 		productSelector.image = xDelay('meta[property="og:image"]@content');
@@ -132,29 +133,13 @@ exports.sites = {
 		productSelector.title = 'meta[property="og:title"]@content';
 		productSelector.original_price = '.regular-price';
 		productSelector.price = '.item-price';
+		productSelector.brand = '#schemaorg-brand-name@content';
 		productSelector.details = x(['.item-price']);
 		productSelector.description = 'meta[property="og:description"]@content';
 		productSelector.image = xDelay('meta[property="og:image"]@content');
+		productSelector.tags = 'meta[name="keywords"]@content';
 
 		var pageURL = 'http://www.bestbuy.com/site/' + path;
-
-		return {
-			page: pageURL,
-			selectors: productSelector
-		};
-
-	},
-	etsy: function(path){
-
-		var productSelector = this.base();
-
-		productSelector.title = '#listing-page-cart-inner > h1 > span';
-		productSelector.price = '#listing-price > span > span.currency-value';
-		productSelector.details = x(['#item-overview > ul > li']);
-		productSelector.description = '#description-text';
-		productSelector.image = xDelay('#image-0@data-large-image-href');
-
-		var pageURL = 'https://www.etsy.com/listing/' + path;
 
 		return {
 			page: pageURL,
@@ -287,13 +272,6 @@ exports.parseURL = function(url, callback){
 		this.scraper({
 			site: 'bestbuy',
 			product_id: parse.pathname.replace('/site/','') + parse.query
-		}, callback);
-	}
-	else if(parse.host == 'www.etsy.com')
-	{
-		this.scraper({
-			site: 'etsy',
-			product_id: parse.pathname.replace('/listing/','')
 		}, callback);
 	}
 	else if(parse.host == 'www.target.com')
