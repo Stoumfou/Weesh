@@ -4,6 +4,15 @@ h5 {
     color: #934999;
 }
 
+.purple {
+    color: #934999;
+}
+
+.purple:hover,
+.purple:focus {
+    color: #934999;
+}
+
 a {
     color: #934999;
 }
@@ -204,7 +213,7 @@ header nav ul.nav-main li.dropdown:hover ul.dropdown-menu li > a {
 }
 
 header nav ul.nav-main li.dropdown:hover ul.dropdown-menu li > a:hover {
-    background: #0099e6 !important;
+    background: #934999 !important;
 }
 
 div.slider div.tp-bannertimer {
