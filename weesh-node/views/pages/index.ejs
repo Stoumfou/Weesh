@@ -1,24 +1,16 @@
 <!DOCTYPE html>
-<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
-<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
-<!--[if gt IE 9]><!-->
 <html>
-<!--<![endif]-->
 <head>
     <% include ../partials/head %>
 </head>
-
 <body ng-app="weesh">
     <div class="body">
-        <header id="header" class="header-narrow" data-plugin-options='{"stickyEnabled": true, "stickyEnableOnBoxed": true, "stickyEnableOnMobile": true, "stickyStartAt": 57, "stickySetTop": "-57px", "stickyChangeLogo": false}'>
             <% include ../partials/header %>
-        </header>
         <div role="main" class="main">
             <ui-view></ui-view>
         </div>
-        <footer>
             <% include ../partials/footer %>
-        </footer>
+        <% include ../partials/scripts %>
     </div>
 </body>
 </html>

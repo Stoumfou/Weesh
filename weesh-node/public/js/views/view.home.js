@@ -1,91 +1,74 @@
-/*
-Name: 			View - Home
-Written by: 	Crivos - (http://www.crivos.com)
-Version: 		1.0
-*/
-
-var Home = {
-
-	initialized: false,
-
-	initialize: function() {
-
-		if (this.initialized) return;
-		this.initialized = true;
-
-		this.build();
-		this.events();
-
-	},
-
-	build: function() {
-
-		// Circle Slider
-		if($("#fcSlideshow").get(0)) {
-			$("#fcSlideshow").flipshow();
-			
-			setInterval( function() {
-				$("#fcSlideshow div.fc-right span:first").click();
-			}, 3000);
-			
-		}
-	
-		// Revolution Slider Initialize
-		if($("#revolutionSlider").get(0)) {
-			$("#revolutionSlider").revolution({
-				delay:9000,
-				startheight:500,
-				startwidth:960,
-
-				hideThumbs:10,
-
-				thumbWidth:100,
-				thumbHeight:50,
-				thumbAmount:5,
-
-				navigationType:"both",
-				navigationArrows:"verticalcentered",
-				navigationStyle:"round",
-
-				touchenabled:"on",
-				onHoverStop:"on",
-
-				navOffsetHorizontal:0,
-				navOffsetVertical:20,
-
-				stopAtSlide:-1,
-				stopAfterLoops:-1,
-
-				shadow:1,
-				fullWidth:"on"
-			});
-		}
-
-		// Nivo Slider
-		if($("#nivoSlider").get(0)) {
-			$("#nivoSlider").nivoSlider();
-		}
-	
-	},
-
-	events: function() {
-
-		this.moveCloud();
-
-	},
-
-	moveCloud: function() {
-
-		var $this = this;
-
-		$(".cloud").animate( {"top": "+=20px"}, 3000, "linear", function() {
-			$(".cloud").animate( {"top": "-=20px"}, 3000, "linear", function() {
-				$this.moveCloud();
-			});
-		});
-
-	}
-
-};
-
-Home.initialize();
+/*
+Name: 			View - Home
+Written by: 	Okler Themes - (http://www.okler.net)
+Version: 		5.2.0
+*/
+
+(function($) {
+
+	'use strict';
+
+	/*
+	Circle Slider
+	*/
+	if ($.isFunction($.fn.flipshow)) {
+		var circleContainer = $('#fcSlideshow');
+
+		if (circleContainer.get(0)) {
+			circleContainer.flipshow();
+
+			setTimeout(function circleFlip() {
+				circleContainer.data().flipshow._navigate(circleContainer.find('div.fc-right span:first'), 'right');
+				setTimeout(circleFlip, 3000);
+			}, 3000);
+		}
+	}
+
+	/*
+	Move Cloud
+	*/
+	if ($('.cloud').get(0)) {
+		var moveCloud = function() {
+			$('.cloud').animate({
+				'top': '+=20px'
+			}, 3000, 'linear', function() {
+				$('.cloud').animate({
+					'top': '-=20px'
+				}, 3000, 'linear', function() {
+					moveCloud();
+				});
+			});
+		};
+
+		moveCloud();
+	}
+
+	/*
+	Nivo Slider
+	*/
+	if ($.isFunction($.fn.nivoSlider)) {
+		$('#nivoSlider').nivoSlider({
+			effect: 'random',
+			slices: 15,
+			boxCols: 8,
+			boxRows: 4,
+			animSpeed: 500,
+			pauseTime: 3000,
+			startSlide: 0,
+			directionNav: true,
+			controlNav: true,
+			controlNavThumbs: false,
+			pauseOnHover: true,
+			manualAdvance: false,
+			prevText: 'Prev',
+			nextText: 'Next',
+			randomStart: false,
+			beforeChange: function(){},
+			afterChange: function(){},
+			slideshowEnd: function(){},
+			lastSlide: function(){},
+			afterLoad: function(){}
+		});
+	}
+
+}).apply(this, [jQuery]);

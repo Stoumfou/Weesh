@@ -10,6 +10,7 @@
     "angular-animate": "^1.5.10",
     "angular-aria": "^1.5.10",
     "angular-material": "^1.1.1",
+    "animate.css": "^3.5.2",
     "body-parser": "~1.15.2",
     "bootstrap": "^3.3.7",
     "cookie-parser": "~1.4.3",
@@ -18,13 +19,21 @@
     "express": "~4.14.0",
     "express-jwt": "^5.1.0",
     "font-awesome": "^4.7.0",
+    "jquery": "^3.1.1",
+    "jquery-lazyload": "^1.9.7",
+    "jquery-validation": "^1.16.0",
+    "jquery.appear": "^1.0.1",
+    "jquery.cookie": "^1.4.1",
+    "jquery.easing": "^1.4.1",
     "jsonwebtoken": "^7.2.1",
     "line-navigator": "^2.1.5",
+    "magnific-popup": "^1.1.0",
     "mongoose": "^4.7.7",
     "morgan": "~1.7.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "product-scraper": "^0.1.1",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "vide": "^0.5.1"
   }
 }
