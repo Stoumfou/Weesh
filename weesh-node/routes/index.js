@@ -14,6 +14,42 @@ router.get('/', function(req, res, next) {
     res.render('pages/index', { title: 'Express' });
 });
 
+// Charge un utilisateur au préalable sur des routes incluant ':userId' (=username)
+router.param('userId', function(req, res, next, id) {
+//    var query = User.findById(id);
+    var query = User.findOne({ username: id });
+
+    query.exec(function (err, user) {
+        if (err) {
+            return next(err);
+        }
+        if (!user) {
+            return next(new Error("Utilisateur (id=" + id + ") non existant."));
+        }
+
+        req.user = user;
+        return next();
+    });
+});
+
+// Charge un produit au préalable sur des routes incluant ':productId' (=sku)
+router.param('productId', function(req, res, next, id) {
+//    var query = Product.findById(id);
+    var query = Product.findOne({ sku: id });
+
+    query.exec(function (err, product) {
+        if (err) {
+            return next(err);
+        }
+        if (!product) {
+            return next(new Error("Produit (id=" + id + ") non existant."));
+        }
+
+        req.product = product;
+        return next();
+    });
+});
+
 // Inscrit un utilisateur
 router.post('/register', function(req, res, next) {
     if (!req.body.username || !req.body.password) {
@@ -58,6 +94,30 @@ router.get('/users', function(req, res, next) {
         }
 
         res.json(users);
+    });
+});
+
+// Renvoie un utilisateur
+router.get('/users/:userId', function(req, res, next) {
+    req.user.populate('products', function(err, user) {
+        if (err) {
+            return next(err);
+        }
+        res.json(user);
+    });
+});
+
+// Ajoute un produit à un utilisateur
+router.put('/users/:userId/products/:productId', function(req, res, next) {
+    var product = new Product(req.product);
+
+    req.user.products.push(product);
+    req.user.save(function(err, user) {
+        if (err) {
+            return next(err);
+        }
+
+        res.json(user);
     });
 });
 

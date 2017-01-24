@@ -89,6 +89,13 @@ User.schema.path('username').validate(function(value, next) {
         if (err) {
             return next(err);
         }
+
+        // S'il s'agit d'un update, il est normal que l'username existe déjà (il doit exister)
+        // La validation retourne true
+        if (!this.isNew) {
+            return next(true);
+        }
+
         // Si un utilisateur avec ce username existe déjà, on retourne false
         // (car le username doit être unique), sinon true
         return next(!user);

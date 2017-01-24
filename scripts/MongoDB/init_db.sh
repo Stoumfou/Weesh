@@ -78,6 +78,21 @@ data+='}'
 
 curl -H 'Content-Type: application/json' -d "$data" http://localhost:3000/register
 
+# Ajouter un produit à un utilisateur
+echo -e "\n* Adding product to user *\n"
+
+curl -X PUT http://localhost:3000/users/SpongeBob99/products/amazon-games-1
+
+# Ajouter un produit à un utilisateur
+echo -e "\n* Adding product to user *\n"
+
+curl -X PUT http://localhost:3000/users/SpongeBob99/products/amazon-games-2
+
+# Afficher un utilisateur
+echo -e "\n* Displaying one user *\n"
+
+curl http://localhost:3000/users/SpongeBob99
+
 # Afficher tous les produits
 echo -e "\n* Displaying all products *\n"
 
