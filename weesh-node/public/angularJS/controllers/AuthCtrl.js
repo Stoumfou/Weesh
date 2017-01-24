@@ -1,10 +1,7 @@
 angular.module('weesh').controller('AuthCtrl', [
-        '$scope'
-        , '$state'
-        , 'auth'
-
-
-    
+    '$scope'
+    , '$state'
+    , 'auth'
     , function ($scope, $state, auth) {
         $scope.user = {
             'name': 'Jean-Eude'
@@ -25,5 +22,5 @@ angular.module('weesh').controller('AuthCtrl', [
                 $state.go('home');
             });
         };
-        }
-    ]);
+    }
+]);

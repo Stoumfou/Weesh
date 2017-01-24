@@ -40,6 +40,11 @@ app.use('/partials/:name', function (req, res) {
   var name = req.params.name;
   res.render('partials/' + name);
 });
+app.use('/public/angularJS/controllers/:name', function (req, res) {
+  var name = req.params.name;
+  console.log("Name : " + name)
+  res.sendFile(path.join(__dirname, 'public') + '/angularJS/controllers/' + name);
+});
 app.use('/', index);
 app.use('/users', users);
 

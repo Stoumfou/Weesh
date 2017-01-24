@@ -1,1 +1,1 @@
-angular.module('weesh', ['ui.router', 'ngMaterial']);
+angular.module('weesh', ['ui.router', 'ngMaterial', "oc.lazyLoad"]);
