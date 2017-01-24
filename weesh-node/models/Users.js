@@ -28,7 +28,7 @@ var UserSchema = new mongoose.Schema({
         type: String,
         required: [ true, 'User gender is missing.' ],
         uppercase: true,
-        enum: { values: [ 'F', 'M' ], message: 'User gender should be either "F" or "M"' }
+        enum: { values: [ 'F', 'M' ], message: 'User gender should be either "F" or "M".' }
     },
     birthDate: {
         type: Date,
