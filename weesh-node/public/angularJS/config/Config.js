@@ -21,70 +21,89 @@ angular.module('weesh').config([
         $stateProvider.state('home', {
             url: '/home'
             , templateUrl: '/partials/home.ejs'
-            , controller: 'MainCtrl',
-
-            resolve: {
+            , controller: 'MainCtrl'
+            , resolve: {
                 loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load('home'); // Resolve promise and load before view 
                 }]
             }
         })
-            .state('login', {
-                url: '/login'
-                , templateUrl: '/login.ejs'
-                , controller: 'AuthCtrl'
-                , onEnter: ['$state', 'auth', function ($state, auth) {
-                    if (auth.isLoggedIn()) {
-                        $state.go('home');
-                    }
+        .state('login', {
+            url: '/login'
+            , templateUrl: '/partials/login.ejs'
+            , controller: 'AuthCtrl'
+            , resolve: {
+                loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load('register'); // Resolve promise and load before view 
                 }]
-            })
-            .state('myLists', {
-                url: '/myLists'
-                , templateUrl: '/partials/myLists.ejs'
-                , controller: 'AuthCtrl'
-                , onEnter: ['$state', 'auth', function ($state, auth) {
-                    if (auth.isLoggedIn()) {
-                        $state.go('home');
-                    }
-                }]
-            })
-            .state('mySettings', {
-                url: '/mySettings'
-                , templateUrl: '/partials/mySettings.ejs'
-                , controller: 'AuthCtrl'
-                , onEnter: ['$state', 'auth', function ($state, auth) {
-                    if (auth.isLoggedIn()) {
-                        $state.go('home');
-                    }
-                }]
-            })
-            .state('myProducts', {
-                url: '/myProducts'
-                , templateUrl: '/partials/myProducts.ejs'
-                , controller: 'AuthCtrl'
-                , onEnter: ['$state', 'auth', function ($state, auth) {
-                    if (auth.isLoggedIn()) {
-                        $state.go('home');
-                    }
-                }]
-            })
-            .state('register', {
-                url: '/register'
-                , templateUrl: '/partials/register.ejs'
-                , controller: 'AuthCtrl',
-                resolve: {
-                    loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
-                        return $ocLazyLoad.load('register'); // Resolve promise and load before view 
-                    }]
+            }
+            , onEnter: ['$state', 'auth', function ($state, auth) {
+                if (auth.isLoggedIn()) {
+                    $state.go('home');
                 }
-                , onEnter: ['$state', 'auth', function ($state, auth) {
-                    if (auth.isLoggedIn()) {
-                        $state.go('home');
-                    }
+            }]
+        })
+        .state('myLists', {
+            url: '/myLists'
+            , templateUrl: '/partials/myLists.ejs'
+            , controller: 'AuthCtrl'
+            , resolve: {
+                loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load('register'); // Resolve promise and load before view 
                 }]
-            });
+            }
+            , onEnter: ['$state', 'auth', function ($state, auth) {
+                if (auth.isLoggedIn()) {
+                    $state.go('home');
+                }
+            }]
+        })
+        .state('mySettings', {
+            url: '/mySettings'
+            , templateUrl: '/partials/mySettings.ejs'
+            , controller: 'AuthCtrl'
+            , resolve: {
+                loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load('register'); // Resolve promise and load before view 
+                }]
+            }
+            , onEnter: ['$state', 'auth', function ($state, auth) {
+                if (auth.isLoggedIn()) {
+                    $state.go('home');
+                }
+            }]
+        })
+        .state('myProducts', {
+            url: '/myProducts'
+            , templateUrl: '/partials/myProducts.ejs'
+            , controller: 'AuthCtrl'
+            , resolve: {
+                loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load('register'); // Resolve promise and load before view 
+                }]
+            }
+            , onEnter: ['$state', 'auth', function ($state, auth) {
+                if (auth.isLoggedIn()) {
+                    $state.go('home');
+                }
+            }]
+        })
+        .state('register', {
+            url: '/register'
+            , templateUrl: '/partials/register.ejs'
+            , controller: 'AuthCtrl'
+            , resolve: {
+                loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load('register'); // Resolve promise and load before view 
+                }]
+            }
+            , onEnter: ['$state', 'auth', function ($state, auth) {
+                if (auth.isLoggedIn()) {
+                    $state.go('home');
+                }
+            }]
+        });
 
-        $urlRouterProvider.otherwise('home');
+    $urlRouterProvider.otherwise('home');
     }
 ]);

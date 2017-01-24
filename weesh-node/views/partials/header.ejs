@@ -14,11 +14,11 @@
                             <div class="header-nav-main header-nav-main-effect-1 header-nav-main-sub-effect-1 collapse">
                                 <nav>
                                     <ul class="nav nav-pills nav-main" id="mainNav">
-                                        <li> <a class="purple" href="/#/myProducts">Mes produits</a> </li>
-                                        <li> <a class="purple" href="/#/myLists">Mes listes</a> </li>
-                                        <li> <a class="purple" href="/#/mySettings">Paramètres</a> </li>
-                                        <li ng-hide="isLoggedIn()"> <a class="purple" href="/#/register">Se connecter</a> </li>
-                                        <li ng-show="isLoggedIn()"> <a class="purple" href="/#/register">Se déconnecter</a> </li>
+                                        <li> <a class="purple" ui-sref="myProducts">Mes produits</a> </li>
+                                        <li> <a class="purple" ui-sref="myLists">Mes listes</a> </li>
+                                        <li> <a class="purple" ui-sref="mySettings">Paramètres</a> </li>
+                                        <li ng-hide="isLoggedIn()"> <a class="purple" ui-sref="login">Se connecter</a> </li>
+                                        <li ng-show="isLoggedIn()"> <a class="purple" ui-sref="logout">Se déconnecter</a> </li>
                                     </ul>
                                 </nav>
                             </div>
