@@ -5,15 +5,15 @@ Leroy Merlin // Marche pas
 Castorama // OK
 La Redoute // OK
 Carrefour // C'est RueDuCommerce 
-PriceMinister
-Leclerc
-Darty   // OK
-Alibaba
-Tesco
+PriceMinister // OK
+Leclerc // Marche pas
+Darty // OK
+Alibaba // Non
+Tesco // OK
 Rakuten
 Asos
-Ubaldi
-Materiel.net
+Ubaldi // OK
+Materiel.net // Marche pas
 LDLC    // APM
 GrosBill    // OK
 Rueducommerce // OK

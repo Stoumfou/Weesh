@@ -53,6 +53,7 @@ exports.sites = {
 			isbn: '', 
 			title: '',
 			original_price: '',
+			sale_price: '',
 			price: '',
 			image: '',
 			brand: '',
@@ -83,6 +84,73 @@ exports.sites = {
 		};
 
 	},
+	bestbuy: function(path) {
+
+		var productSelector = this.base();
+
+		productSelector.id = '#sku-value'; 
+		productSelector.title = 'meta[property="og:title"]@content';
+		productSelector.original_price = '.regular-price';
+		productSelector.price = '.item-price';
+		productSelector.brand = '#schemaorg-brand-name@content';
+		productSelector.details = x(['.item-price']);
+		productSelector.description = 'meta[property="og:description"]@content';
+		productSelector.image = xDelay('meta[property="og:image"]@content');
+		productSelector.tags = 'meta[name="keywords"]@content';
+
+		var pageURL = 'http://www.bestbuy.com/site/' + path;
+
+		return {
+			page: pageURL,
+			selectors: productSelector
+		};
+
+	},
+	castorama: function(path) {
+
+		var productSelector = this.base();
+
+		productSelector.id = '.refNum'; 
+		productSelector.title = '.productContent > h1';
+		productSelector.original_price = '.oldprice'; // Ancien prix si promotion
+		productSelector.price = '.price'; // Prix si pas de promotion
+		productSelector.sale_price = '.newprice'; // Nouveau prix si promotion 
+		productSelector.brand = '.productLabel > a > img@title';
+		productSelector.details = x(['.tabTechnique > ul > li']);
+		productSelector.description ='meta[name="description"]@content';
+		productSelector.image = xDelay('.productImage > a > img@src');
+		productSelector.tags = 'meta[name="keywords"]@content';
+
+		var pageURL = 'http://www.castorama.fr/store/' + path;
+
+		return {
+			page: pageURL,
+			selectors: productSelector
+		};
+
+	},
+	cdiscount: function(path) { // MARCHE PAS
+
+		var productSelector = this.base();
+
+		productSelector.id = ''; 
+		productSelector.title = 'meta[property="og:title"]@content';
+		productSelector.original_price = '';
+		productSelector.price = '';
+		productSelector.brand = '';
+		productSelector.details = x(['']);
+		productSelector.description = 'meta[name="description"]@content';
+		productSelector.image = xDelay('meta[property="og:image"]@content');
+		productSelector.tags = 'meta[name="keywords"]@content';
+
+		var pageURL = 'http://www.cdiscount.com/' + path;
+
+		return {
+			page: pageURL,
+			selectors: productSelector
+		};
+
+	},
 	fnac: function(path) {
 
 		var productSelector = this.base();
@@ -97,6 +165,49 @@ exports.sites = {
 		productSelector.image = xDelay('meta[property="og:image"]@content');
 
 		var pageURL = 'http://www.fnac.com/' + path;
+
+		return {
+			page: pageURL,
+			selectors: productSelector
+		};
+
+	}, 
+	laredoute: function(path) {
+
+		var productSelector = this.base();
+
+		productSelector.id = '#pdpFRdivMain@data-productid';
+		productSelector.title = 'meta[property="og:title"]@content';
+		productSelector.sale_price = '.final-price';
+		productSelector.original_price = '.sale-price-before';
+		productSelector.price = '.final-price';
+		productSelector.brand = '#ctl00_cphMain_ctl00_ctl00_aBrand';
+		productSelector.details = x(['.left > div']);
+		productSelector.description = 'meta[property="og:description"]@content';
+		productSelector.image = xDelay('meta[property="og:image"]@content');
+
+		var pageURL = 'http://www.laredoute.fr/ppdp/' + path;
+
+		return {
+			page: pageURL,
+			selectors: productSelector
+		};
+
+	}, 
+	leroymerlin: function(path) {
+
+		var productSelector = this.base();
+
+		productSelector.id = '';
+		productSelector.title = 'meta[property="og:title"]@content';
+		productSelector.original_price = '';
+		productSelector.price = '';
+		productSelector.brand = '';
+		productSelector.details = x([]);
+		productSelector.description = 'meta[property="og:description"]@content';
+		productSelector.image = xDelay('meta[property="og:image"]@content');
+
+		var pageURL = 'http://www.leroymerlin.fr/' + path;
 
 		return {
 			page: pageURL,
@@ -125,28 +236,28 @@ exports.sites = {
 		};
 
 	}, 
-	bestbuy: function(path) {
+	rueducommerce: function(path) { 
 
 		var productSelector = this.base();
 
-		productSelector.id = '#sku-value'; 
-		productSelector.title = 'meta[property="og:title"]@content';
-		productSelector.original_price = '.regular-price';
-		productSelector.price = '.item-price';
-		productSelector.brand = '#schemaorg-brand-name@content';
-		productSelector.details = x(['.item-price']);
+		productSelector.id = '#offerInnerContainer@data-offerid'; 
+		productSelector.isbn = 'meta[property="og:isbn"]@content';
+		productSelector.title = 'h1';
+		productSelector.original_price = '.retail > p.price';
+		productSelector.sale_price = 'meta[itemprop="price"]@content';
+		productSelector.price = 'meta[itemprop="price"]@content';
+		productSelector.details = x(['#blocAttributesContent']);
 		productSelector.description = 'meta[property="og:description"]@content';
 		productSelector.image = xDelay('meta[property="og:image"]@content');
-		productSelector.tags = 'meta[name="keywords"]@content';
 
-		var pageURL = 'http://www.bestbuy.com/site/' + path;
+		var pageURL = 'http://www.rueducommerce.fr/' + path;
 
 		return {
 			page: pageURL,
 			selectors: productSelector
 		};
 
-	},
+	}, 
 	target: function(path){
 
 		var productSelector = this.base();
@@ -192,7 +303,10 @@ exports.scraper = function(opts, callback){
 				_obj.details = details;
 			}
 
-			if(_obj.id) _obj.id = _obj.id.trim(); 
+			if(_obj.id) _obj.id = _obj.id.trim();
+			// RAJOUTER CONDITION POUR CASTORAMA 
+			if(_obj.id) _obj.id = _obj.id.trim()
+					.replace('Réf :', '');
 			if(_obj.isbn) _obj.isbn = _obj.isbn.trim(); 
 			if(_obj.original_price) _obj.original_price = _obj.original_price.trim(); 
 			// RAJOUTER CONDITION POUR BESTBUY
@@ -253,11 +367,46 @@ exports.parseURL = function(url, callback){
 			product_id: parse.pathname + parse.query
 		}, callback);
 	}
+	else if(parse.host == 'www.bestbuy.com')
+	{
+		this.scraper({
+			site: 'bestbuy',
+			product_id: parse.pathname.replace('/site/','') + parse.query
+		}, callback);
+	}
+	else if(parse.host == 'www.castorama.fr')
+	{
+		this.scraper({
+			site: 'castorama',
+			product_id: parse.pathname.replace('/store/','') + parse.query
+		}, callback);
+	}
+	else if(parse.host == 'www.cdiscount.com')
+	{
+		this.scraper({
+			site: 'cdiscount',
+			product_id: parse.pathname + parse.query
+		}, callback);
+	}
 	else if(parse.host == 'www.fnac.com') 
 	{
 		this.scraper({
 			site: 'fnac',
 			product_id: parse.pathname.replace('/w-4', '').match(/a\d{7}/)
+		}, callback);
+	}
+	else if(parse.host == 'www.laredoute.fr')  
+	{
+		this.scraper({
+			site: 'laredoute',
+			product_id: parse.pathname.replace('/ppdp/','') + parse.query
+		}, callback);
+	}
+	else if(parse.host == 'www.leroymerlin.fr')  
+	{
+		this.scraper({
+			site: 'leroymerlin',
+			product_id: parse.pathname.replace('/v3/p/produits/','') + parse.query
 		}, callback);
 	}
 	else if(parse.host == 'livre.fnac.com')  
@@ -267,11 +416,11 @@ exports.parseURL = function(url, callback){
 			product_id: parse.pathname.replace('/', '').match(/a\d{7}/)
 		}, callback);
 	}
-	else if(parse.host == 'www.bestbuy.com')
+	else if(parse.host == 'www.rueducommerce.fr')  
 	{
 		this.scraper({
-			site: 'bestbuy',
-			product_id: parse.pathname.replace('/site/','') + parse.query
+			site: 'rueducommerce',
+			product_id: parse.pathname.replace('/', '') + parse.query
 		}, callback);
 	}
 	else if(parse.host == 'www.target.com')
