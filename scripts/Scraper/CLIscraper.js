@@ -27,7 +27,7 @@ function parseFiles(){
                 if(err) {
                   return console.log('\x1b[41m%s\x1b[0m',err);
                 }
-                console.log('\x1b[32m%s\x1b[0m', line + " was saved!"); // Ecrit en vert
+                console.log('\x1b[32m%s\x1b[0m', line + " was saved!"); // Ecrit en vert GJ
               });
           });
         });
