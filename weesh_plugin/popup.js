@@ -208,10 +208,17 @@ if (!chrome.runtime.error) {
 
 
 $(document).ready(function () {
-    $("div.tabs").tabs();
-    $('#registerButton').on('click', function(){
-        chrome.tabs.create({url: "http://www.google.fr"});
-        return false;
-    });
-    
-});
+                $("div.tabs").tabs();
+                $('#registerButton').on('click', function(){
+                    chrome.tabs.create({url: "http://www.google.fr"});
+                    return false;
+                });
+                $('#amazonButton').on('click', function(){
+                    chrome.tabs.create({url: "https://www.amazon.fr/"});
+                    return false;
+                });
+                $('#fnacButton').on('click', function(){
+                    chrome.tabs.create({url: "http://www.fnac.com/"});
+                    return false;
+                });
+            }); 
