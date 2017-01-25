@@ -10,38 +10,103 @@
     </div>
 </div>
 <div class="container">
-    <div class="row center bloc"> <i class="fa fa-user user"><span class="content iconText">{{user.name}}</span></i>
+    <div class="row center bloc"> <i class="fa fa-user user"><span class="content iconText">{{user.username}}</span></i>
         <hr class="tall hr" />
-        <h4 class="span12">Bienvenue sur votre espace {{user.name}}</h4> </div>
+        <h4 class="span12">Bienvenue sur votre espace {{user.username}}</h4> </div>
 </div>
 <div class="container">
     <div class="row bloc"> <i class="fa fa-cog user"><span class="content iconText">Vos paramètres</span></i>
-        <hr class="tall hr" />
-        <md-content layout-padding>
-            <form name="projectForm">
-                <md-input-container class="md-block">
-                    <label>User Name</label>
-                    <input required name="userName" ng-model="user.name">
-                    <div ng-messages="projectForm.userName.$error">
-                        <div ng-message="required">This is required.</div>
+        <hr class="tall hr hr" />
+        <md-content class="bloc inside" layout-padding>
+            <form name="form" ng-submit="register()">
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <div class="form-group">
+                            <label>Prénom</label>
+                            <input required type="text" name="user.firstName" ng-model="user.firstName">
+                            <div ng-messages="registerForm.user.firstName.$error">
+                                <div ng-message="required">Ce champ est obligatoire.</div>
+                            </div>
+                        </div>
+                    </md-input-container>
+                    <div flex="10" hide-xs hide-sm>
+                        <!-- Spacer //-->
                     </div>
-                </md-input-container>
-                <md-input-container class="md-block">
-                    <label>Email</label>
-                    <input required type="email" name="userEmail" ng-model="user.email" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
-                    <div ng-messages="projectForm.userEmail.$error" role="alert">
-                        <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']"> Your email must be between 10 and 100 characters long and should be a valid email address. </div>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <div class="form-group">
+                            <label>Nom</label>
+                            <input required type="text" name="user.lastName" ng-model="user.lastName">
+                            <div ng-messages="registerForm.user.lastName.$error">
+                                <div ng-message="required">Ce champ est obligatoire.</div>
+                            </div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Nom d'utilisateur</label>
+                        <input required type="text" name="user.username" ng-model="user.username">
+                        <div ng-messages="registerForm.user.username.$error">
+                            <div ng-message="required">Ce champ est obligatoire.</div>
+                        </div>
+                    </md-input-container>
+                    <div flex="10" hide-xs hide-sm>
+                        <!-- Spacer //-->
                     </div>
-                </md-input-container>
-                <md-input-container class="md-block">
-                    <label>Addresse</label>
-                    <input name="adress" ng-model="user.address"> </md-input-container>
-                <md-input-container class="md-block">
-                    <label>Date de naissance</label>
-                    <md-datepicker ng-model="user.birthDate"></md-datepicker>
-                </md-input-container>
-                <md-button type="submit" class="btn btn-large btn-primary btn-orange" ng-class="{'md-raised md-hue-1': (contactForm.$dirty && contactForm.$valid) }" aria-label="Save Project">Confirmer</md-button>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Mot de passe</label>
+                        <input required type="password" name="user.password" ng-model="user.password" minlength="5">
+                        <div ng-messages="registerForm.user.password.$error">
+                            <div ng-message="required">Ce champ est obligatoire.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Email</label>
+                        <input required type="email" name="user.email" ng-model="user.email" minlength="10" ng-pattern="/^.+@.+\..+$/" />
+                        <div ng-messages="registerForm.user.emails.$error" role="alert">
+                            <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']"> Votre adresse mail n'est pas valable. </div>
+                        </div>
+                    </md-input-container>
+                    <div flex="10" hide-xs hide-sm>
+                        <!-- Spacer //-->
+                    </div>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Addresse</label>
+                        <input required type="text" name="user.address" ng-model="user.address" minlength="5">
+                        <div ng-messages="registerForm.user.password.$error">
+                            <div ng-message="required">Ce champ est obligatoire.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <div class="form-group">
+                            <label>Enter date</label>
+                            <md-datepicker ng-model="user.birthDate" name="user.birthDate" md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
+                            <div ng-messages="registerForm.dateField.$error">
+                                <div ng-message="valid">The entered value is not a date!</div>
+                                <div ng-message="required">Ce champ est obligatoire.</div>
+                                <div ng-message="mindate">Date is too early!</div>
+                                <div ng-message="maxdate">Date is too late!</div>
+                            </div>
+                        </div>
+                    </md-input-container>
+                    <div flex="10" hide-xs hide-sm>
+                        <!-- Spacer //-->
+                    </div>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <div class="form-group">
+                            <label>Sex</label>
+                            <md-select ng-model="user.gender">
+                                <md-option ng-value="m">homme</md-option>
+                                <md-option ng-value="f">femme</md-option>
+                            </md-select>
+                        </div>
+                    </md-input-container>
+                </div>
+                <button type="submit" class="btn btn-primary btn-orange">S'enregistrer</button>
             </form>
         </md-content>
     </div>
-</div>

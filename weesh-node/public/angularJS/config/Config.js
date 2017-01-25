@@ -5,6 +5,7 @@ angular.module('weesh').config([
      , "$mdThemingProvider"
 
 
+
     
     , function ($ocLazyLoadProvider, $stateProvider, $urlRouterProvider, $mdThemingProvider) {
         var controllerPath = "/public/angularJS/controllers/";

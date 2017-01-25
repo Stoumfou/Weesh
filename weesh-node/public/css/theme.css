@@ -2008,6 +2008,10 @@ section.page-top h2 {
     padding: 10px 0px 20px 0px;
 }
 
+.inside {
+    box-shadow: none;
+}
+
 .user {
     float: left;
     color: #fe4f00;

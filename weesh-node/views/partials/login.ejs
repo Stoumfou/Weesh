@@ -1,1 +1,37 @@
-tttt
+<div id="content" class="content full">
+    <div class="home-intro">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="span12">
+                    <p>"Make your <em>Weesh </em> come true"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <md-content class="bloc">
+        <form name="form" ng-submit="logIn()">
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Nom d'utilisateur</label>
+                    <input required type="text" name="user.username" ng-model="user.username">
+                    <div ng-messages="registerForm.user.username.$error">
+                        <div ng-message="required">Ce champ est obligatoire.</div>
+                    </div>
+                </md-input-container>
+                <div flex="10" hide-xs hide-sm>
+                    <!-- Spacer //-->
+                </div>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Mot de passe</label>
+                    <input required type="password" name="user.password" ng-model="user.password" minlength="5">
+                    <div ng-messages="registerForm.user.password.$error">
+                        <div ng-message="required">Ce champ est obligatoire.</div>
+                    </div>
+                </md-input-container>
+            </div>
+            <button type="submit" class="btn btn-primary btn-orange">Se connecter</button>
+        </form>
+    </md-content>
+</div>
