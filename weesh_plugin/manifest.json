@@ -1,0 +1,29 @@
+{   
+"name": "Weesh",   
+"version": "1.4",
+"manifest_version": 2,
+"description": "WeeshList",
+"web_accessible_resources": ["iconT.png"],
+"background" : {
+    "scripts": ["background.js"],
+     "persistent":true
+},
+"permissions": [
+    "tabs",
+    "http://*/*",
+    "webNavigation",
+    "storage"
+],
+"browser_action": {     
+    "default_icon": "iconT.png",
+    "default_popup": "popup.html"   
+},
+"content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["jquery.min.js","contentscript.js"],
+      "run_at": "document_end"
+    }
+]
+
+}

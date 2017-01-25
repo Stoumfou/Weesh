@@ -1,10 +1,10 @@
-Amazon
-CDiscount
-Fnac
-Leroy Merlin
-Castorama
-La Redoute
-Carrefour
+Amazon  // OK
+CDiscount // Marche pas
+Fnac // OK
+Leroy Merlin // Marche pas
+Castorama // OK
+La Redoute // OK
+Carrefour // C'est RueDuCommerce 
 PriceMinister
 Leclerc
 Darty
@@ -16,7 +16,7 @@ Ubaldi
 Materiel.net
 LDLC
 GrosBill
-Rueducommerce
+Rueducommerce // OK
 
 
 
