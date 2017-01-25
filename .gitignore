@@ -2,5 +2,6 @@ npm-debug.log
 **/.idea/workspace.xml
 **/.idea/tasks.xml
 /weesh-node/node_modules
-#/scripts/Scraper/node_modules/*
-#!/scripts/Scraper/node_modules/product-scraper
+/scripts/Scraper/node_modules
+!/scripts/Scraper/node_modules/product-scraper
+
