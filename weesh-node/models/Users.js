@@ -26,7 +26,7 @@ var UserSchema = new mongoose.Schema({
     },
     gender: {
         type: String,
-        required: [ true, 'User gender is missing.' ],
+//        required: [ true, 'User gender is missing.' ],
         uppercase: true,
         enum: { values: [ 'F', 'M' ], message: 'User gender should be either "F" or "M".' }
     },
@@ -116,8 +116,10 @@ User.schema.path('address').validate(function(value) {
 }, 'User address is required.', 'required');
 **/
 
+/** A décommenter quand le formulaire d'inscription aura intégré l'email
 // Valide le format de l'adresse mail
 User.schema.path('email').validate(function(value) {
     var regex = /[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
     return regex.test(value);
 }, 'User email format is invalid.', 'Invalid email');
+ **/
