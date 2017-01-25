@@ -6,12 +6,18 @@ var ProductSchema = new mongoose.Schema({
         unique: true, // Ce champ assure un index unique, pas un document unique (cf. la fonction de validation de sku ci-dessous)
         required: [ true, 'Product SKU is missing.' ]
     },
-    name: String,
-    provider: {
+    name: {
+        type: String,
+        required: [ true, 'Product name is missing.']
+    },
+    provider: [{
         name: String,
         productUrl: String
+    }],
+    price: {
+        type: Number,
+        required: [ true, 'Product price is missing.']
     },
-    price: Number,
     shippings: [{
         cost: Number,
         delay: Number
@@ -46,3 +52,13 @@ Product.schema.path('sku').validate(function(value, next) {
         return next(!product);
     });
 }, 'Product SKU already exists.', 'Duplicate SKU');
+
+// Valide si le provider est présent
+// (On utilise un validateur custom car on ne peut pas mettre un validateur 'required'
+// sur un schéma imbriqué comme 'provider' sans créer un nouveau document 'provider' en base)
+Product.schema.path('provider').validate(function(value) {
+    if (!value || value.length === 0) {
+        return false;
+    }
+    return true;
+}, 'Product provider is required.', 'required');

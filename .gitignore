@@ -4,4 +4,5 @@ npm-debug.log
 /weesh-node/node_modules
 /scripts/Scraper/node_modules
 !/scripts/Scraper/node_modules/product-scraper
+/scripts/MongoDB/InitFromScraping/node_modules
 
