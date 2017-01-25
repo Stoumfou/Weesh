@@ -12,7 +12,7 @@
     "cheerio": "^0.22.0",
     "fs": "0.0.1-security",
     "path": "^0.12.7",
-    "product-scraper": "^0.1.1",
+    /*"product-scraper": "^0.1.1", Pour éviter d'écraser les modifs avec un npm install Garder */
     "request": "^2.79.0"
   }
 }
