@@ -12,43 +12,95 @@
 <div class="container">
     <md-content class="bloc" layout-padding>
         <form name="form" ng-submit="register()" class="row center css-form">
-            <md-input-container class="md-block row">
-                <div class="form-group">
-                    <div class="col-md-6">
-                        <label>Nom d'utilisateur</label>
-                        <input required name="user.name" ng-model="user.name">
-                        <div ng-messages="projectForm.userName.$error">
-                            <div ng-message="required">This is required.</div>
+            <div class="row">
+                <md-input-container>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <label>Prénom</label>
+                            <input required type="text" name="user.firstName" ng-model="user.firstName">
+                            <div ng-messages="registerForm.user.firstName.$error">
+                                <div ng-message="required">Ce champ est obligatoire.</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </md-input-container>
-            <md-input-container class="md-block row">
-                <div class="form-group">
-                    <div class="col-md-6">
-                        <label>Email</label>
-                        <input required type="email" name="userEmail" ng-model="user.email" minlength="10" ng-pattern="/^.+@.+\..+$/" />
-                        <div ng-messages="projectForm.userEmail.$error" role="alert">
-                            <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']"> Your email must be between 10 and 100 characters long and should be a valid email address. </div>
+                </md-input-container>
+                <md-input-container>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <label>Nom</label>
+                            <input required type="text" name="user.lastName" ng-model="user.lastName">
+                            <div ng-messages="registerForm.user.lastName.$error">
+                                <div ng-message="required">Ce champ est obligatoire.</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </md-input-container>
-            <md-input-container class="md-block row">
-                <div class="form-group">
-                    <div class="col-md-6">
-                        <label>Enter date</label>
-                        <md-datepicker ng-model="user.birthdate" name="dateField"></md-datepicker>
-                        <div ng-messages="myOtherForm.dateField.$error">
-                            <div ng-message="valid">The entered value is not a date!</div>
-                            <div ng-message="required">This date is required!</div>
-                            <div ng-message="mindate">Date is too early!</div>
-                            <div ng-message="maxdate">Date is too late!</div>
+                </md-input-container>
+            </div>
+            <div class="md-block row">
+                <md-input-container>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <label>Nom d'utilisateur</label>
+                            <input required type="text" name="user.username" ng-model="user.username">
+                            <div ng-messages="registerForm.user.username.$error">
+                                <div ng-message="required">Ce champ est obligatoire.</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </md-input-container>
-            <button type="submit" class="btn btn-primary btn-orange">Register</button>
-        </form>
+                </md-input-container>
+                <md-input-container>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <label>Mot de passe</label>
+                            <input required type="password" name="user.password" ng-model="user.password" minlength="5">
+                            <div ng-messages="registerForm.user.password.$error">
+                                <div ng-message="required">Ce champ est obligatoire.</div>
+                            </div>
+                        </div>
+                    </div>
+                </md-input-container>
+            </div>
+            <div class="md-block row">
+                <md-input-container>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <label>Email</label>
+                            <input required type="email" name="user.email" ng-model="user.email" minlength="10" ng-pattern="/^.+@.+\..+$/" />
+                            <div ng-messages="registerForm.user.emails.$error" role="alert">
+                                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']"> Votre adresse mail n'est pas valable. </div>
+                            </div>
+                        </div>
+                    </div>
+                </md-input-container>
+            </div>
+            <div class="md-block row">
+                <md-input-container>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <label>Enter date</label>
+                            <md-datepicker ng-model="user.birthDate" name="user.birthDate" md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
+                            <div ng-messages="registerForm.dateField.$error">
+                                <div ng-message="valid">The entered value is not a date!</div>
+                                <div ng-message="required">Ce champ est obligatoire.</div>
+                                <div ng-message="mindate">Date is too early!</div>
+                                <div ng-message="maxdate">Date is too late!</div>
+                            </div>
+                        </div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <label>Sex</label>
+                            <md-select ng-model="user.gender">
+                                <md-option ng-value="m">homme</md-option>
+                                <md-option ng-value="f">femme</md-option>
+                            </md-select>
+                        </div>
+                    </div>
+                </md-input-container>
+            </div>
+            <button type="submit" class="btn btn-primary btn-orange">S'enregistrer</button>
+            <h1>Mon erreur: {{error}}</h1> </form>
     </md-content>
 </div>
