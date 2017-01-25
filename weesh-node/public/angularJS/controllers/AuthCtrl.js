@@ -12,12 +12,12 @@ angular.module('weesh').controller('AuthCtrl', [
     
     , function ($scope, $state, auth) {
         $scope.user = {
-            'username': 'Jeans1'
-            , 'lastName': 'olo'
-            , 'firstName': 'lalal'
-            , 'email': 'lepere@gmail.com'
-            , 'password': 'papapapapapap'
-            , 'gender': 'm'
+            'username': 'Panda'
+            , 'lastName': 'a'
+            , 'firstName': 'b'
+            , 'email': ''
+            , 'password': 'pass'
+            , 'gender': 'f'
             , 'address': ''
             , birthDate: ''
         };
@@ -25,17 +25,17 @@ angular.module('weesh').controller('AuthCtrl', [
         $scope.minDate = new Date($scope.user.birthDate.getFullYear(), $scope.user.birthDate.getMonth() - 2, $scope.user.birthDate.getDate());
         $scope.maxDate = new Date($scope.user.birthDate.getFullYear(), $scope.user.birthDate.getMonth() + 2, $scope.user.birthDate.getDate());
         $scope.register = function () {
-            auth.register($scope.user).error(function (error) {
-                $scope.error = error;
-            }).then(function () {
+            auth.register($scope.user).then(function success() {
                 $state.go('home');
+            }, function error(error) {
+                $scope.error = error;
             });
         };
         $scope.logIn = function () {
-            auth.logIn($scope.user).error(function (error) {
-                /* $scope.error = error;*/
-            }).then(function () {
+            auth.logIn($scope.user).then(function success() {
                 $state.go('home');
+            }, function error(error) {
+                $scope.error = error;
             });
         };
     }
