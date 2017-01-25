@@ -7,10 +7,10 @@ var ProductSchema = new mongoose.Schema({
         required: [ true, 'Product SKU is missing.' ]
     },
     name: String,
-    providers: [{
+    provider: {
         name: String,
         productUrl: String
-    }],
+    },
     price: Number,
     shippings: [{
         cost: Number,
