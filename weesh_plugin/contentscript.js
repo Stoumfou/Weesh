@@ -43,18 +43,43 @@ function amazonPutButton(){
     var listLi = document.getElementById('s-results-list-atf').getElementsByTagName('li');
     
     
-    
     for(var i = 0 ; listImg.length < count ; i++) {
-        //if(typeof listLi[i].getElementsByTagName('img')[0] == "undefined") continue;
         
-        console.log(listLi[i].getElementsByTagName('img'));
-        if(typeof listLi[i].getElementsByTagName('img')[0] != "undefined") listImg.push(listLi[i].getElementsByTagName('img')[0].src);
-        if(typeof listLi[i].getElementsByTagName('h2')[0] != "undefined") listNames.push(listLi[i].getElementsByTagName('h2')[0].innerHTML);
-        if(typeof listLi[i].getElementsByTagName('a')[0] != "undefined") listUrl.push(listLi[i].getElementsByTagName('a')[0].href);
-        if(typeof listLi[i].getElementsByClassName('a-size-base a-color-price a-text-bold')[0] != "undefined") listPrices.push(listLi[i].getElementsByClassName('a-size-base a-color-price a-text-bold')[0].innerHTML);
-        
-        if(typeof listLi[i].getElementsByClassName('a-size-base a-color-price a-text-bold')[0] != "undefined") addButton(listImg.length-1,listLi[i].getElementsByClassName('a-size-base a-color-price a-text-bold')[0]);
+        if(typeof listLi[i].getElementsByTagName('img')[0] != "undefined") {
+            listImg.push(listLi[i].getElementsByTagName('img')[0].src);
+            listNames.push(listLi[i].getElementsByTagName('h2')[0].innerHTML);
+            listUrl.push(listLi[i].getElementsByTagName('a')[0].href);
+            
+            if(typeof listLi[i].getElementsByClassName('a-size-base a-color-price a-text-bold')[0] != "undefined")              {
+            listPrices.push(listLi[i].getElementsByClassName('a-size-base a-color-price a-text-bold')[0]
+                            .innerHTML);
+            addButton(listImg.length-1,listLi[i]
+                      .getElementsByClassName('a-size-base a-color-price a-text-bold')[0]);
+            }
+            
+            else if (typeof listLi[i].getElementsByClassName('sx-price sx-price-large')[0] != "undefined") {
+                console.log(listLi[i].getElementsByClassName('sx-price sx-price-large')[0].innerText);
+                listPrices.push(listLi[i].getElementsByClassName('sx-price sx-price-large')[0]
+                            .innerText);
+                addButton(listImg.length-1,listLi[i]
+                      .getElementsByClassName('sx-price sx-price-large')[0]);
+            } else {
+                listPrices.push("-1");
+                continue;
+            }
+            
+        }
     }
+    
+    var x = 0;
+    var re = /(\d)\s+(?=\d)/g;
+    
+    listPrices.forEach(
+        function replaceSpace() {        
+            listPrices[x] = listPrices[x].replace(re, '$1,');
+            x++;
+        }
+    );
     
     console.log(listImg);
     console.log(listNames);
