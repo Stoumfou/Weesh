@@ -1,10 +1,13 @@
 angular.module('weesh').config([
-    '$ocLazyLoadProvider',
-    '$stateProvider',
-    '$urlRouterProvider',
-    function ($ocLazyLoadProvider, $stateProvider, $urlRouterProvider) {
-        var controllerPath = "/public/angularJS/controllers/";
+    '$ocLazyLoadProvider'
+    , '$stateProvider'
+    , '$urlRouterProvider'
+     , "$mdThemingProvider"
 
+
+    
+    , function ($ocLazyLoadProvider, $stateProvider, $urlRouterProvider, $mdThemingProvider) {
+        var controllerPath = "/public/angularJS/controllers/";
         //Config for ocLazyLoading
         $ocLazyLoadProvider.config({
             'debug': true, // For debugging 'true/false'
@@ -17,7 +20,7 @@ angular.module('weesh').config([
                 files: [controllerPath + 'AuthCtrl.js']
             }]
         });
-
+        $mdThemingProvider.theme('default').primaryPalette('purple').accentPalette('orange');
         $stateProvider.state('home', {
             url: '/home'
             , templateUrl: '/partials/home.ejs'
@@ -27,8 +30,7 @@ angular.module('weesh').config([
                     return $ocLazyLoad.load('home'); // Resolve promise and load before view 
                 }]
             }
-        })
-        .state('login', {
+        }).state('login', {
             url: '/login'
             , templateUrl: '/partials/login.ejs'
             , controller: 'AuthCtrl'
@@ -42,8 +44,7 @@ angular.module('weesh').config([
                     $state.go('home');
                 }
             }]
-        })
-        .state('myLists', {
+        }).state('myLists', {
             url: '/myLists'
             , templateUrl: '/partials/myLists.ejs'
             , controller: 'AuthCtrl'
@@ -57,8 +58,7 @@ angular.module('weesh').config([
                     $state.go('home');
                 }
             }]
-        })
-        .state('mySettings', {
+        }).state('mySettings', {
             url: '/mySettings'
             , templateUrl: '/partials/mySettings.ejs'
             , controller: 'AuthCtrl'
@@ -72,8 +72,7 @@ angular.module('weesh').config([
                     $state.go('home');
                 }
             }]
-        })
-        .state('myProducts', {
+        }).state('myProducts', {
             url: '/myProducts'
             , templateUrl: '/partials/myProducts.ejs'
             , controller: 'AuthCtrl'
@@ -87,8 +86,7 @@ angular.module('weesh').config([
                     $state.go('home');
                 }
             }]
-        })
-        .state('register', {
+        }).state('register', {
             url: '/register'
             , templateUrl: '/partials/register.ejs'
             , controller: 'AuthCtrl'
@@ -103,7 +101,6 @@ angular.module('weesh').config([
                 }
             }]
         });
-
-    $urlRouterProvider.otherwise('home');
+        $urlRouterProvider.otherwise('home');
     }
 ]);

@@ -1998,7 +1998,8 @@ section.page-top h2 {
     z-index: 3;
     border-color: #b3b3b3;
     box-shadow: 2px 1px 5px rgba(0, 0, 0, .5);
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     background-color: white;
     text-align: center;
     vertical-align: middle;
