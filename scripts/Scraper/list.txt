@@ -7,7 +7,7 @@ La Redoute // OK
 Carrefour // C'est RueDuCommerce 
 PriceMinister
 Leclerc
-Darty   // A finir, APM
+Darty   // OK
 Alibaba
 Tesco
 Rakuten
@@ -15,8 +15,5 @@ Asos
 Ubaldi
 Materiel.net
 LDLC    // APM
-GrosBill    // APM
+GrosBill    // OK
 Rueducommerce // OK
-
-
-
