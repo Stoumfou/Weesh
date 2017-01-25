@@ -8,6 +8,13 @@ h5 {
     color: #934999;
 }
 
+.hr {
+    background-color: white;
+    background-image: none;
+    border-color: white;
+    color: white;
+}
+
 .purple:hover,
 .purple:focus {
     color: #934999;
@@ -53,8 +60,11 @@ a:active {
     color: #fe4f00;
 }
 
-.btn-orange:hover {
-    color: #ffffff;
+.btn-orange:active,
+.btn-orange:focus,
+.btn-orange:hover,
+.btn-orange:active:hover,
+.btn-orange:active:focus {
     background-color: #fa741b;
     text-decoration: none;
     background-position: 0 -15px;
@@ -270,11 +280,11 @@ div.pricing-table div.most-popular {
 
 div.pricing-table div.most-popular h3 {
     background-color: #0074ad;
-    background-image: -moz-linear-gradient(top, #934999, #005580);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#934999), to(#005580));
-    background-image: -webkit-linear-gradient(top, #934999, #005580);
-    background-image: -o-linear-gradient(top, #934999, #005580);
-    background-image: linear-gradient(to bottom, #934999, #005580);
+    background-image: -moz-linear-gradient(top, #934999, #934999);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#934999), to(#934999));
+    background-image: -webkit-linear-gradient(top, #934999, #934999);
+    background-image: -o-linear-gradient(top, #934999, #934999);
+    background-image: linear-gradient(to bottom, #934999, #934999);
     background-repeat: repeat-x;
     filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff005580', GradientType=0);
 }
@@ -284,5 +294,5 @@ footer div.footer-ribon {
 }
 
 footer div.footer-ribon::before {
-    border-right-color: #005580;
+    border-right-color: #934999;
 }

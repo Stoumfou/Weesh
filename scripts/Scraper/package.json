@@ -1,7 +1,7 @@
 {
   "name": "scraper",
   "version": "1.0.0",
-  "description": "Scraper utilisé par Weesh",
+  "description": "Scraper utilisé par Weesh, basé sur npm product-scraper",
   "main": "CLIscraper.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,7 +12,6 @@
     "cheerio": "^0.22.0",
     "fs": "0.0.1-security",
     "path": "^0.12.7",
-    "product-scraper": "^0.1.1",
     "request": "^2.79.0"
   }
 }

@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
-<% include ../partials/head %>
-
+    <% include ../partials/head %>
     <body ng-app="weesh">
         <div class="body">
             <% include ../partials/header %>
-                <div role="main" class="main">
-                    <ui-view></ui-view>
-                </div>
-                <% include ../partials/footer %>
-                    <% include ../partials/scripts %>
+            <div role="main" class="main">
+                <ui-view></ui-view>
+            </div>
+            <% include ../partials/footer %>
+            <% include ../partials/scripts %>
         </div>
     </body>
-
 </html>

@@ -39,7 +39,13 @@ app.use(passport.initialize());
 
 app.use('/partials/:name', function (req, res) {
   var name = req.params.name;
+  console.log("View/Partials : " + name)
   res.render('partials/' + name);
+});
+app.use('/public/angularJS/controllers/:name', function (req, res) {
+  var name = req.params.name;
+  console.log("Controller : " + name)
+  res.sendFile(path.join(__dirname, 'public') + '/angularJS/controllers/' + name);
 });
 app.use('/', index);
 app.use('/users', users);
