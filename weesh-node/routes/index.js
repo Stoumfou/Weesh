@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var Product = mongoose.model('Product');
 var User = mongoose.model('User');
+var Weeshlist = mongoose.model('Weeshlist');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -24,7 +25,7 @@ router.param('userId', function(req, res, next, id) {
             return next(err);
         }
         if (!user) {
-            return next(new Error("Utilisateur (id=" + id + ") non existant."));
+            return next(new Error("Utilisateur (username=" + id + ") non existant."));
         }
 
         req.user = user;
@@ -42,10 +43,30 @@ router.param('productId', function(req, res, next, id) {
             return next(err);
         }
         if (!product) {
-            return next(new Error("Produit (id=" + id + ") non existant."));
+            return next(new Error("Produit (sku=" + id + ") non existant."));
         }
 
         req.product = product;
+        return next();
+    });
+});
+
+// Charge une weeshlist au préalable sur des routes incluant ':weeshlistId' (=title formaté en URL)
+// Note : Ce weeshlistId doit être encodé au préalable avec encodeURIComponent(id)
+router.param('weeshlistId', function(req, res, next, id) {
+//    var query = Weeshlist.findById(id);
+    var urlId = decodeURIComponent(id); // On transforme l'URL en texte originel
+    var query = Weeshlist.findOne({ owner: req.user._id, title: urlId });
+
+    query.exec(function (err, weeshlist) {
+        if (err) {
+            return next(err);
+        }
+        if (!weeshlist) {
+            return next(new Error("Weeshlist (title=" + id + ") non existant."));
+        }
+
+        req.weeshlist = weeshlist;
         return next();
     });
 });
@@ -107,17 +128,56 @@ router.get('/users/:userId', function(req, res, next) {
     });
 });
 
+/**
+ * TODO MHU à modifier pour que l'utilisateur corresponde à la personne connectée (req.payload.username) ?
+ * TODO MHU Même réflexion pour les autres routes nécessaires
+ */
+// Ajoute une weeshlist à un utilisateur
+router.post('/users/:userId/weeshlists', function(req, res, next) {
+    var weeshlist = new Weeshlist(req.body);
+    weeshlist.owner = req.user._id;
+
+    weeshlist.save(function(err, weeshlist) {
+        if (err) {
+            return next(err);
+        }
+
+        res.json(weeshlist);
+    });
+});
+
+// Renvoie la liste des weeshlists d'un utilisateur
+router.get('/users/:userId/weeshlists', function(req, res, next) {
+    Weeshlist.find({ owner: req.user._id}, function(err, weeshlists) {
+        if (err) {
+            return next(err);
+        }
+
+        res.json(weeshlists);
+    });
+});
+
 // Ajoute un produit à un utilisateur
 router.put('/users/:userId/products/:productId', function(req, res, next) {
-    var product = new Product(req.product);
-
-    req.user.products.push(product);
+    req.user.products.push(req.product);
     req.user.save(function(err, user) {
         if (err) {
             return next(err);
         }
 
         res.json(user);
+    });
+});
+
+// Ajoute un produit à une weeshlist
+router.put('/users/:userId/weeshlists/:weeshlistId/products/:productId', function(req, res, next) {
+    req.weeshlist.products.push(req.product);
+    req.weeshlist.save(function(err, weeshlist) {
+        if (err) {
+            return next(err);
+        }
+
+        res.json(weeshlist);
     });
 });
 

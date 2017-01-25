@@ -28,6 +28,8 @@ var Product = mongoose.model('Product', ProductSchema);
 
 // Valide si le sku n'existe pas déjà
 Product.schema.path('sku').validate(function(value, next) {
+    const isNew = this.isNew; // Pour y avoir accès dans le callback
+
     Product.findOne({'sku': value}, function(err, product) {
         if (err) {
             return next(err);
@@ -35,7 +37,7 @@ Product.schema.path('sku').validate(function(value, next) {
 
         // S'il s'agit d'un update, il est normal que le sku existe déjà (il doit exister)
         // La validation retourne true
-        if (!this.isNew) {
+        if (!isNew) {
             return next(true);
         }
 
@@ -43,4 +45,4 @@ Product.schema.path('sku').validate(function(value, next) {
         // (car le SKU doit être unique), sinon true
         return next(!product);
     });
-}, 'Product SKU already exist.', 'Duplicate SKU');
+}, 'Product SKU already exists.', 'Duplicate SKU');

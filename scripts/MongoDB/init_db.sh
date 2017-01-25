@@ -78,6 +78,26 @@ data+='}'
 
 curl -H 'Content-Type: application/json' -d "$data" http://localhost:3000/register
 
+# Ajouter une weeshlist
+echo -e "\n* Adding new weeshlist *\n"
+
+data='{'
+data+='"title":"Idées Noël"'
+data+=',"visibility":"PUBLIC"'
+data+='}'
+
+curl -H 'Content-Type: application/json' -d "$data" http://localhost:3000/users/Sandy/weeshlists
+
+# Ajouter une weeshlist
+echo -e "\n* Adding new weeshlist *\n"
+
+data='{'
+data+='"title":"Anniversaire"'
+data+=',"visibility":"PRIVATE"'
+data+='}'
+
+curl -H 'Content-Type: application/json' -d "$data" http://localhost:3000/users/Sandy/weeshlists
+
 # Ajouter un produit à un utilisateur
 echo -e "\n* Adding product to user *\n"
 
@@ -88,10 +108,20 @@ echo -e "\n* Adding product to user *\n"
 
 curl -X PUT http://localhost:3000/users/SpongeBob99/products/amazon-games-2
 
+# Ajouter un produit à une weeshlist
+echo -e "\n* Adding product to weeshlist *\n"
+
+curl -X PUT http://localhost:3000/users/Sandy/weeshlists/Id%C3%A9es%20No%C3%ABl/products/amazon-games-2
+
 # Afficher un utilisateur
 echo -e "\n* Displaying one user *\n"
 
 curl http://localhost:3000/users/SpongeBob99
+
+# Afficher les weeshlists d'un utilisateur
+echo -e "\n* Displaying all weeshlists of one user *\n"
+
+curl http://localhost:3000/users/Sandy/weeshlists
 
 # Afficher tous les produits
 echo -e "\n* Displaying all products *\n"

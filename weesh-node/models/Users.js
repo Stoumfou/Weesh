@@ -85,6 +85,8 @@ var User = mongoose.model('User', UserSchema);
 
 // Valide si l'username n'existe pas déjà
 User.schema.path('username').validate(function(value, next) {
+    const isNew = this.isNew; // Pour y avoir accès dans le callback
+
     User.findOne({'username': value}, function(err, user) {
         if (err) {
             return next(err);
@@ -92,7 +94,7 @@ User.schema.path('username').validate(function(value, next) {
 
         // S'il s'agit d'un update, il est normal que l'username existe déjà (il doit exister)
         // La validation retourne true
-        if (!this.isNew) {
+        if (!isNew) {
             return next(true);
         }
 
@@ -100,7 +102,7 @@ User.schema.path('username').validate(function(value, next) {
         // (car le username doit être unique), sinon true
         return next(!user);
     });
-}, 'User username already exist.', 'Duplicate username');
+}, 'User username already exists.', 'Duplicate username');
 
 /** A décommenter quand le formulaire d'inscription aura intégré l'adresse
 // Valide si l'adresse est présente

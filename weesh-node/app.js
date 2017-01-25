@@ -13,6 +13,7 @@ mongoose.connect('mongodb://localhost/weesh');
 
 require('./models/Products');
 require('./models/Users');
+require('./models/Weeshlists');
 
 require('./config/passport');
 
