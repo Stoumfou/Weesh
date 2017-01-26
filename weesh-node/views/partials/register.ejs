@@ -66,9 +66,28 @@
                     <!-- Spacer //-->
                 </div>
                 <md-input-container class="md-block" flex-gt-sm>
-                    <label>Addresse</label>
-                    <input required type="text" name="user.address" ng-model="user.address" minlength="5">
-                    <div ng-messages="registerForm.user.password.$error">
+                    <label>Adresse (rue)</label>
+                    <input required type="text" name="user.address.street" ng-model="user.address.street" minlength="5">
+                    <div ng-messages="registerForm.user.address.street.$error">
+                        <div ng-message="required">Ce champ est obligatoire.</div>
+                    </div>
+                </md-input-container>
+            </div>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Ville</label>
+                    <input required type="text" name="user.address.city" ng-model="user.address.city" minlength="10" ng-pattern="/^.+@.+\..+$/" />
+                    <div ng-messages="registerForm.user.address.city.$error" role="alert">
+                        <div ng-message="required">Ce champ est obligatoire.</div>
+                    </div>
+                </md-input-container>
+                <div flex="10" hide-xs hide-sm>
+                    <!-- Spacer //-->
+                </div>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Code postal</label>
+                    <input required type="text" name="user.address.zip" ng-model="user.address.zip" minlength="5">
+                    <div ng-messages="registerForm.user.address.zip.$error">
                         <div ng-message="required">Ce champ est obligatoire.</div>
                     </div>
                 </md-input-container>

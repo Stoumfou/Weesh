@@ -2,6 +2,11 @@ angular.module('weesh').controller('AuthCtrl', [
     '$scope'
     , '$state'
     , 'auth'
+
+
+
+
+    
     , function ($scope, $state, auth) {
         $scope.user = {
             'username': 'Panda'
@@ -10,7 +15,11 @@ angular.module('weesh').controller('AuthCtrl', [
             , 'email': ''
             , 'password': 'pass'
             , 'gender': 'f'
-            , 'address': ''
+            , 'address': {
+                'city': 'Boulogne'
+                , 'street': 'rue de sèvres'
+                , "zip": "92100"
+            }
             , birthDate: ''
         };
         $scope.user.birthDate = new Date();
