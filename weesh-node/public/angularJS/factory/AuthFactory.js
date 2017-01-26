@@ -24,12 +24,12 @@ angular.module('weesh').factory('auth', ['$http', '$window', '$rootScope', funct
             },
             register: function (user) {
                 return $http.post('/register', user).then(function (data) {
-                    auth.saveToken(data.token);
+                    auth.saveToken(data.data.token);
                 });
             },
             logIn: function (user) {
                 return $http.post('/login', user).then(function (data) {
-                    auth.saveToken(data.token);
+                    auth.saveToken(data.data.token);
                 });
             },
             logOut: function () {

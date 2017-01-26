@@ -15,6 +15,9 @@ angular.module('weesh').config([
             }, {
                 name: 'register', // home state
                 files: [controllerPath + 'AuthCtrl.js']
+            }, {
+                name: 'nav',
+                files: [controllerPath + 'NavCtrl.js']
             }]
         });
 

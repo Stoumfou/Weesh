@@ -82,10 +82,10 @@ router.post('/register', function (req, res, next) {
     var user = new User(req.body);
     user.setPassword(req.body.password);
     user.save(function (err) {
-        console.error(err);
         if (err) {
             return next(err);
         }
+
         return res.json({
             token: user.generateJWT()
         })
