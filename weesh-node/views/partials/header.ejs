@@ -18,6 +18,7 @@
                                         <li> <a class="purple" ui-sref="myLists">Mes listes</a> </li>
                                         <li> <a class="purple" ui-sref="mySettings">Paramètres</a> </li>
                                         <li ng-hide="isLoggedIn()"> <a class="purple" ui-sref="login">Se connecter</a> </li>
+                                        <li ng-hide="isLoggedIn()"> <a class="purple" ui-sref="register">S'inscrire</a></li>
                                         <li ng-show="isLoggedIn()" ng-click="logOut()"> <a class="purple" ui-sref="logout">Se déconnecter</a> </li>
                                     </ul>
                                 </nav>

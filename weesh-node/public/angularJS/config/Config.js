@@ -2,11 +2,7 @@ angular.module('weesh').config([
     '$ocLazyLoadProvider'
     , '$stateProvider'
     , '$urlRouterProvider'
-     , "$mdThemingProvider"
-
-
-
-    
+    , "$mdThemingProvider"
     , function ($ocLazyLoadProvider, $stateProvider, $urlRouterProvider, $mdThemingProvider) {
         var controllerPath = "/public/angularJS/controllers/";
         //Config for ocLazyLoading
@@ -21,7 +17,9 @@ angular.module('weesh').config([
                 files: [controllerPath + 'AuthCtrl.js']
             }]
         });
+
         $mdThemingProvider.theme('default').primaryPalette('purple').accentPalette('orange');
+        
         $stateProvider.state('home', {
             url: '/home'
             , templateUrl: '/partials/home.ejs'

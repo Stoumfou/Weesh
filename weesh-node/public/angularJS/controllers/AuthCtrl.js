@@ -2,14 +2,6 @@ angular.module('weesh').controller('AuthCtrl', [
     '$scope'
     , '$state'
     , 'auth'
-
-
-
-
-
-
-
-    
     , function ($scope, $state, auth) {
         $scope.user = {
             'username': 'Panda'
