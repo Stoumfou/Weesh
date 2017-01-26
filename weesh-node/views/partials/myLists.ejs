@@ -16,72 +16,18 @@
 </div>
 <div class="container">
     <hr class="tall hr hr" />
-    <div class="row">
-        <ul class="portfolio-list sort-destination" data-sort-id="portfolio">
-            <li class="col-md-4 isotope-item websites">
-                <div class="portfolio-item thumbnail">
-                    <a href="portfolio-single-project.html" class="thumb-info"> <img alt="" src="img/projects/project.jpg"> <span class="thumb-info-title">
-											<span class="thumb-info-inner">SEO</span> <span class="thumb-info-type">Website</span> </span> <span class="thumb-info-action">
-											<span title="Universal" href="#" class="thumb-info-action-icon"><i class="icon-link"></i></span> </span>
-                    </a>
+    <div class="row center bloc">
+        <div class="col-md-12">
+            <div style="height: 305px">
+                <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+                    <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id"> <img ng-src="{{slide.image}}" style="margin:auto;">
+                        <div class="carousel-caption">
+                            <h4>Slide {{slide.id}}</h4>
+                            <p>{{slide.text}}</p>
+                        </div>
+                    </div>
                 </div>
-            </li>
-            <li class="col-md-4 isotope-item brands">
-                <div class="portfolio-item thumbnail">
-                    <a href="portfolio-single-project.html" class="thumb-info"> <img alt="" src="img/projects/project-1.jpg"> <span class="thumb-info-title">
-											<span class="thumb-info-inner">Red Wine</span> <span class="thumb-info-type">Brand</span> </span> <span class="thumb-info-action">
-											<span title="Universal" href="#" class="thumb-info-action-icon"><i class="icon-link"></i></span> </span>
-                    </a>
-                </div>
-            </li>
-            <li class="col-md-4 isotope-item logos">
-                <div class="portfolio-item thumbnail">
-                    <a href="portfolio-single-project.html" class="thumb-info"> <img alt="" src="img/projects/project-2.jpg"> <span class="thumb-info-title">
-											<span class="thumb-info-inner">Man Running</span> <span class="thumb-info-type">Logo</span> </span> <span class="thumb-info-action">
-											<span title="Universal" href="#" class="thumb-info-action-icon"><i class="icon-link"></i></span> </span>
-                    </a>
-                </div>
-            </li>
-            <li class="col-md-4 isotope-item websites">
-                <div class="portfolio-item thumbnail">
-                    <a href="portfolio-single-project.html" class="thumb-info"> <img alt="" src="img/projects/project-3.jpg"> <span class="thumb-info-title">
-											<span class="thumb-info-inner">The Code</span> <span class="thumb-info-type">Website</span> </span> <span class="thumb-info-action">
-											<span title="Universal" href="#" class="thumb-info-action-icon"><i class="icon-link"></i></span> </span>
-                    </a>
-                </div>
-            </li>
-            <li class="col-md-4 isotope-item websites">
-                <div class="portfolio-item thumbnail">
-                    <a href="portfolio-single-project.html" class="thumb-info"> <img alt="" src="img/projects/project.jpg"> <span class="thumb-info-title">
-											<span class="thumb-info-inner">SEO</span> <span class="thumb-info-type">Website</span> </span> <span class="thumb-info-action">
-											<span title="Universal" href="#" class="thumb-info-action-icon"><i class="icon-link"></i></span> </span>
-                    </a>
-                </div>
-            </li>
-            <li class="col-md-4 isotope-item brands">
-                <div class="portfolio-item thumbnail">
-                    <a href="portfolio-single-project.html" class="thumb-info"> <img alt="" src="img/projects/project-1.jpg"> <span class="thumb-info-title">
-											<span class="thumb-info-inner">Red Wine</span> <span class="thumb-info-type">Brand</span> </span> <span class="thumb-info-action">
-											<span title="Universal" href="#" class="thumb-info-action-icon"><i class="icon-link"></i></span> </span>
-                    </a>
-                </div>
-            </li>
-            <li class="col-md-4 isotope-item logos">
-                <div class="portfolio-item thumbnail">
-                    <a href="portfolio-single-project.html" class="thumb-info"> <img alt="" src="img/projects/project-2.jpg"> <span class="thumb-info-title">
-											<span class="thumb-info-inner">Man Running</span> <span class="thumb-info-type">Logo</span> </span> <span class="thumb-info-action">
-											<span title="Universal" href="#" class="thumb-info-action-icon"><i class="icon-link"></i></span> </span>
-                    </a>
-                </div>
-            </li>
-            <li class="col-md-4 isotope-item websites">
-                <div class="portfolio-item thumbnail">
-                    <a href="portfolio-single-project.html" class="thumb-info"> <img alt="" src="img/projects/project-3.jpg"> <span class="thumb-info-title">
-											<span class="thumb-info-inner">The Code</span> <span class="thumb-info-type">Website</span> </span> <span class="thumb-info-action">
-											<span title="Universal" href="#" class="thumb-info-action-icon"><i class="icon-link"></i></span> </span>
-                    </a>
-                </div>
-            </li>
-        </ul>
+            </div>
+        </div>
     </div>
 </div>
