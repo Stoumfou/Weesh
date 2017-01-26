@@ -11,9 +11,9 @@ Darty // OK
 Alibaba // C'est NON
 Tesco // OK
 Rakuten
-Asos
+Asos // Marche pas, le prix est bind en JS
 Ubaldi // OK
 Materiel.net // Marche pas
-LDLC    // Fait mais le fichier ne s'écrit pas ! Dunno why
-GrosBill    // OK
+LDLC // Fait, mais le fichier ne s'écrit pas ! Dunno why
+GrosBill // OK
 Rueducommerce // OK
