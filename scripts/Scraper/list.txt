@@ -8,12 +8,12 @@ Carrefour // C'est RueDuCommerce
 PriceMinister // OK
 Leclerc // Marche pas
 Darty // OK
-Alibaba // Non
+Alibaba // C'est NON
 Tesco // OK
 Rakuten
 Asos
 Ubaldi // OK
 Materiel.net // Marche pas
-LDLC    // APM
+LDLC    // Fait mais le fichier ne s'écrit pas ! Dunno why
 GrosBill    // OK
 Rueducommerce // OK
