@@ -6,13 +6,14 @@ angular.module('weesh').controller('AuthCtrl', [
 
 
 
+
     
     , function ($scope, $state, auth) {
         $scope.user = {
             'username': 'Panda'
             , 'lastName': 'a'
             , 'firstName': 'b'
-            , 'email': ''
+            , 'email': 'patate@gmail.com'
             , 'password': 'pass'
             , 'gender': 'f'
             , 'address': {
