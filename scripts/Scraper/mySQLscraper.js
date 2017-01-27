@@ -2,14 +2,13 @@ var _mysql = require('mysql');
 
 
 module.exports = {
-  connectToDB: function (metadata) {
+  connectToScrape: function (metadata) {
 
   		var HOST = 'localhost';
 		var PORT = 3306;
 		var MYSQL_USER = 'root';
 		var MYSQL_PASS = '';
 		var DATABASE = 'sweesh';
-		var TABLE = 'users';
 
     	var mysql = _mysql.createConnection({
     	host: HOST,
@@ -17,7 +16,6 @@ module.exports = {
     	user: MYSQL_USER,
     	password: MYSQL_PASS,
     	database: DATABASE,
-    	table: TABLE
 	});
     	var data = JSON.parse(metadata); // On parse l'objet reçu en JSON
     	mysql.connect();
@@ -42,5 +40,5 @@ module.exports = {
             console.log('\x1b[32m%s\x1b[0m', data.url + " was saved!"); // Ecrit en vert GJ
 		});
     	mysql.end();
- 	},
+ 	}
 };

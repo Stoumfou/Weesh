@@ -3,10 +3,10 @@ var request = require('request');
 var cheerio = require('cheerio');
 var fs = require('fs');
 var path = require('path');
-var mySQL = require('./mySQL');
+var mySQL = require('./mySQLscraper');
 var filePath = path.join(__dirname, "/toBeCrawled/");
 
-function parseAndWriteFiles(){
+/*function parseAndWriteFiles(){
   if(process.argv.length > 2){
     process.argv.forEach(function (filename, index, array) {
 
@@ -35,7 +35,7 @@ function parseAndWriteFiles(){
       }
     });
   }
-}
+}*/
 
 function parseAndWriteDB(){
   // Si des paramètres sont présents en ligne de commande
@@ -53,7 +53,7 @@ function parseAndWriteDB(){
         lineReader.on('line', function (line) {
           // On scrape et on entre le produit dans la base mySQL
           scraper.init(line, function(data){
-              mySQL.connectToDB(JSON.stringify(data)); // Connection à la base mySQL
+              mySQL.connectToScrape(JSON.stringify(data)); // Connection à la base mySQL
           });
         });
       }
