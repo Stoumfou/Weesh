@@ -79,9 +79,9 @@ angular.module('weesh').config([
                 }]
             }
             , onEnter: ['$state', 'auth', function ($state, auth) {
-                if (!auth.isLoggedIn()) {
-                    $state.go('home');
-                }
+     if (!auth.isLoggedIn()) {
+         $state.go('home');
+     }
             }]
         }).state('myProducts', {
             url: '/myProducts'
