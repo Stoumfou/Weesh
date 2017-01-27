@@ -80,6 +80,16 @@ data+='}'
 
 curl -H 'Content-Type: application/json' -d "$data" http://localhost:3000/register
 
+# Connecter un utilisateur
+echo -e "\n* Login new user *\n"
+
+data='{'
+data+='"username":"Sandy"'
+data+=',"password":"squirrel"'
+data+='}'
+
+curl -H 'Content-Type: application/json' -d "$data" http://localhost:3000/login
+
 # Ajouter une weeshlist
 echo -e "\n* Adding new weeshlist *\n"
 
