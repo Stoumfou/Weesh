@@ -1,19 +1,20 @@
-Amazon  // OK
-CDiscount // Marche pas
-Fnac // OK
-Leroy Merlin // Marche pas
-Castorama // OK
-La Redoute // OK
-Carrefour // C'est RueDuCommerce 
-PriceMinister // OK
-Leclerc // Marche pas
-Darty // OK
-Alibaba // C'est NON
-Tesco // OK
-Rakuten
-Asos // Marche pas, le prix est bind en JS
-Ubaldi // OK
-Materiel.net // Marche pas
-LDLC // Fait, mais le fichier ne s'écrit pas ! Dunno why
-GrosBill // OK
-Rueducommerce // OK
+﻿Amazon
+CDiscount
+Fnac
+Leroy Merlin
+
+Castorama
+La Redoute
+PriceMinister
+
+
+Darty
+
+Tesco
+
+Ubaldi
+
+LDLC
+
+GrosBill
+Rueducommerce

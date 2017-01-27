@@ -3,9 +3,10 @@ var request = require('request');
 var cheerio = require('cheerio');
 var fs = require('fs');
 var path = require('path');
+var mySQL = require('./mySQL');
 var filePath = path.join(__dirname, "/toBeCrawled/");
 
-function parseFiles(){
+function parseAndWriteFiles(){
   if(process.argv.length > 2){
     process.argv.forEach(function (filename, index, array) {
 
@@ -35,35 +36,31 @@ function parseFiles(){
     });
   }
 }
-/*
 
-// Boucle pour parser et stocker les sites en ligne de commande : "node app.js site1 site2 site3 ..."
-function parse(){
+function parseAndWriteDB(){
+  // Si des paramètres sont présents en ligne de commande
   if(process.argv.length > 2){
-    process.argv.forEach(function (val, index, array) {
+    process.argv.forEach(function (filename, index, array) {
 
-      console.log(index + ': ' + val);
-      if(val.includes("http")){
+      console.log(index + ': ' + filename);
+      if(filename.includes(".txt")){
+        var file = filePath + filename;
+        // Lecture ligne par ligne des fichiers texte
+        var lineReader = require('readline').createInterface({
+          input: require('fs').createReadStream(file)
+        });
 
-        scraper.init(val, function(data){
-            var outputPath = path.join(__dirname, "/Sites/") + extractDomain(val);
-            console.log(outputPath);
-            // On crée un dossier pour stocker chaque domaine différent
-            if(!fs.existsSync(outputPath)){
-              fs.mkdirSync(outputPath);
-            }
-
-            fs.writeFile(outputPath + "/" + data.id, JSON.stringify(data), function(err) {
-              if(err) {
-                return console.log(err);
-              }
-              console.log("Site " + val + " was saved!\n");
-            });
+        lineReader.on('line', function (line) {
+          // On scrape et on entre le produit dans la base mySQL
+          scraper.init(line, function(data){
+              mySQL.connectToDB(JSON.stringify(data)); // Connection à la base mySQL
+          });
         });
       }
     });
   }
-}*/
+  else console.log("Pas assez de paramètres ! Veuillez écrire la commande comme suit : node CLIscraper.js <site1>.txt <site2>.txt ...");
+}
 
 function extractDomain(url) {
     var sub;
@@ -81,5 +78,5 @@ function extractDomain(url) {
     return parts[lenparts - 2] + "." + parts[lenparts - 1];
 }
 
-// parse();
-parseFiles();
+//parseAndWriteFiles();
+parseAndWriteDB();
