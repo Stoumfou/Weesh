@@ -56,7 +56,7 @@ angular.module('weesh').config([
                 }]
             }
             , onEnter: ['$state', 'auth', function ($state, auth) {
-                if (auth.isLoggedIn()) {
+                if (!auth.isLoggedIn()) {
                     $state.go('home');
                 }
             }]
@@ -70,7 +70,7 @@ angular.module('weesh').config([
                 }]
             }
             , onEnter: ['$state', 'auth', function ($state, auth) {
-                if (auth.isLoggedIn()) {
+                if (!auth.isLoggedIn()) {
                     $state.go('home');
                 }
             }]
@@ -84,7 +84,7 @@ angular.module('weesh').config([
                 }]
             }
             , onEnter: ['$state', 'auth', function ($state, auth) {
-                if (auth.isLoggedIn()) {
+                if (!auth.isLoggedIn()) {
                     $state.go('home');
                 }
             }]
