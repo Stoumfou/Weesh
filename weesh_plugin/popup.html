@@ -57,15 +57,27 @@
               min-height:400px !important;
           }
           
-          #tab3 {
+          #tab4 {
             float:right;
           }
-          #tabs-3 img{
+          #tabs-4 img{
             width: 100px; /* you can use % */
             height: auto;
           }
           #clear {
             margin-top: 30px;
+          }
+          #msgErrorLog{
+              color:darkred;
+              display: none;
+          }
+          #msgSuccessLog{
+              color:darkgreen;
+              display: none;
+          }
+          
+          #loggedDiv{
+              display: none;
           }
           
           
@@ -85,7 +97,8 @@
         <ul>
             <li id="tab1"><a href="#tabs-1">Weesh liste</a></li>
             <li id="tab2"><a href="#tabs-2">Connexion</a></li>
-            <li id="tab3"><a href="#tabs-3"><span class="ui-icon ui-icon-info"></span></a></li>
+            <li id="tab3"><a href="#tabs-3"></a></li>
+            <li id="tab4"><a href="#tabs-4"><span class="ui-icon ui-icon-info"></span></a></li>
         </ul>
           <div id="tabs-1"> 
               
@@ -95,26 +108,35 @@
             </div>
     
           <div id="tabs-2"> 
-               <form class="form-signin">
+                <h3 id='msgErrorLog'>Cet utilisateur n'est pas reconnu.</h3>
+                <h3 id='msgSuccessLog'>Bienvenue !</h3>
+               <form id="formConnect" class="form-signin">
                     <h2 class="form-signin-heading">Please sign in</h2>
-                    <label for="inputEmail" class="sr-only">Email address</label>
-                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                    <label for="inputEmail"" "class="sr-only">Login</label>
+                    <input type="email" id="inputLogin" class="form-control" placeholder="Login" required autofocus>
                     <label for="inputPassword" class="sr-only">Password</label>
                     <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                     
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Connect</button>
+                    <button class="btn btn-lg btn-primary btn-block" id="connectButton" type="submit">Connect</button>
                 </form>
               <button class="btn btn-lg btn-success btn-block" id="registerButton" type="button">Register</button>
+              <div id="loggedDiv">Voici vos listes disponibles :
+              
+              <ul id="weeshListsLogged"></ul></div>
+              
           </div>
+        <div id="tabs-3">
+        </div>
         
-        <div id="tabs-3"> 
+        
+        <div id="tabs-4"> 
             <h3><span class="label label-default">New</span> Sites compatibles</h3>
-            <a id="amazonButton" href=""><img src="http://www.euramtec.com/images/amazonlogo.png"/></a>
+            <a id="amazonButton"" "href=""><img src="http://www.euramtec.com/images/amazonlogo.png"/></a>
             <h4><span class="label label-default">New</span> Sites à venir</h4>
             <a id="fnacButton" href=""><img src="http://www.ncmb.fr/wp-content/uploads/2015/09/logo-fnac-comm.jpg"/></a>
-            
-        
         </div>
+        
+        
     </div>
       
         <script src="jquery.min.js"></script>

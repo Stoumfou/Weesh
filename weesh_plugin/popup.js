@@ -4,7 +4,7 @@ var urls = [];
 var names = [];
 var prices = [];
 
-chrome.runtime.sendMessage({method:'getUrls'}, function(listUrls){
+!chrome.runtime.sendMessage({method:'getUrls'}, function(listUrls){
     if (typeof listUrls != 'undefined' && listUrls != null && listUrls.length != 0) {
         urls = listUrls;
         urls.forEach(myFunction);
@@ -221,4 +221,46 @@ $(document).ready(function () {
                     chrome.tabs.create({url: "http://www.fnac.com/"});
                     return false;
                 });
+    
+                $('#connectButton').on('click', function(){
+                    
+                    $.ajax({
+                        type: "POST",
+                        url: "http://localhost:3000/login",
+                        data: {
+                            "username":$('#inputLogin').val(),
+                            "password":$('#inputPassword').val()
+                        },
+                        success: function(data){
+                            $('#msgErrorLog').hide();
+                            $('#msgSuccessLog').show();
+                            $('#formConnect').hide();
+                            $('#registerButton').hide();
+                            $('#loggedDiv').show();
+                            setWeeshListes();
+                            $("#msgSuccessLog").html("Bienvenue "+$('#inputLogin').val()+" !");
+                        },
+                        error: function(data){
+                            $('#msgErrorLog').show();
+                            $('#msgSuccessLog').hide();
+                        }
+                    });
+                });
+    
+    function setWeeshListes(){
+        $.ajax({
+                        type: "GET",
+                        url: "http://localhost:3000/users/"+$('#inputLogin').val()+"/weeshlists",
+                        success: function(data){
+                            console.log(data);
+                            
+                            $.each(data, function(i, item) {
+                                $('#weeshListsLogged').append('<li id="weeshList'+i+'">'+item.title+'</li>');
+                            });
+                        },
+                        error: function(data){
+                            console.log('error?');
+                        }
+                    });
+    }
             }); 

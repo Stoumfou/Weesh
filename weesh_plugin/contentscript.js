@@ -19,29 +19,32 @@ var listNames = [];
 function partA() { 
     
     //Amazon
-    var a = document.getElementsByClassName('a-size-base a-color-price a-text-bold');
-    var b = document.getElementsByClassName('a-size-base a-color-price s-price a-text-bold');
+    var a = document.getElementById('s-results-list-atf');
+    //var b = document.getElementsByClassName('a-size-base a-color-price s-price a-text-bold');
     var c = document.getElementById('submit.add-to-cart-announce');
     
-    amazonPutButton();
+    if(a!=null) amazonPutButton(a);
+    if(c!=null) addBigButton(c);
+    
+    
     //Google search
     //var b = document.getElementsByClassName('_QD _pvi');
     
 
     //if(a!=null) addManyButtons(a);
     //if(b!=null) addManyButtons(b);
-    //if(c!=null) addBigButton(c);
+    
 }
 
-function amazonPutButton(){
+function amazonPutButton(a){
     listImg=[];
     listNames=[];
     listUrl=[];
     listPrices=[];
     
-    var count = document.getElementById('s-results-list-atf').children.length;
-    var listLi = document.getElementById('s-results-list-atf').getElementsByTagName('li');
-    
+    var count = a.children.length;
+    var listLi = a.getElementsByTagName('li');
+
     
     for(var i = 0 ; listImg.length < count ; i++) {
         
@@ -160,8 +163,11 @@ function insertAfter(referenceNode, newNode) {
 }
 
 function addUrlInList(link){
-    console.log("stop?");
-    chrome.runtime.sendMessage({method:'setTitle',title:link});
+    var srcImg = document.getElementById('landingImage').src;
+    var priceSend = document.getElementById('priceblock_ourprice').innerHTML;
+    var nameSend = document.getElementById('landingImage').alt;
+        
+    chrome.runtime.sendMessage({method:'setItem',url:link,img:srcImg,price:priceSend,name:nameSend});
 }
 
 
@@ -171,13 +177,6 @@ function addElementInList(id) {
     var srcImg = listImg[res];
     var priceSend = listPrices[res];
     var nameSend = listNames[res];
-    
-    /*
-    var contains = '/gp/slredirect/';
-
-    if (link.includes(contains)) {
-        link = 'https://www.amazon.fr/'+link;
-    }*/
         
     chrome.runtime.sendMessage({method:'setItem',url:link,img:srcImg,price:priceSend,name:nameSend});
 }
