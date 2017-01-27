@@ -137,6 +137,11 @@ echo -e "\n* Displaying all weeshlists of one user *\n"
 
 curl http://localhost:3000/users/Sandy/weeshlists
 
+# Afficher une weeshlist
+echo -e "\n* Displaying one weeshlist *\n"
+
+curl http://localhost:3000/users/Sandy/weeshlists/Id%C3%A9es%20No%C3%ABl
+
 # Afficher tous les produits
 echo -e "\n* Displaying all products *\n"
 

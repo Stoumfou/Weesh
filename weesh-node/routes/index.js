@@ -158,6 +158,15 @@ router.get('/users/:userId/weeshlists', function (req, res, next) {
         res.json(weeshlists);
     });
 });
+// Renvoie une weeshlist
+router.get('/users/:userId/weeshlists/:weeshlistId', function (req, res, next) {
+    req.weeshlist.populate('products', function (err, weeshlist) {
+        if (err) {
+            return next(err);
+        }
+        res.json(weeshlist);
+    });
+});
 // Ajoute un produit à un utilisateur
 router.put('/users/:userId/products/:productId', function (req, res, next) {
     req.user.products.push(req.product);
