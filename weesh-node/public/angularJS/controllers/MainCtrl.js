@@ -1,7 +1,10 @@
 angular.module('weesh').controller('MainCtrl', [
-        '$scope',
-        'auth',
-        function ($scope, auth) {
-            $scope.isLoggedIn = auth.isLoggedIn;
+        '$scope'
+        , 'auth'
+
+    
+    , function ($scope, auth) {
+        console.log("enter MainCtrl");
+        $scope.isLoggedIn = auth.isLoggedIn;
         }
     ]);

@@ -14,16 +14,20 @@
         <hr class="tall hr hr" />
         <h4 class="span12">Bienvenue sur votre espace {{user.username}}</h4> </div>
 </div>
-<div class="container">
-    <hr class="tall hr hr" />
-    <div class="row center bloc">
-        <div class="col-md-12">
-            <div style="height: 305px">
-                <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
-                    <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id"> <img ng-src="{{slide.image}}" style="margin:auto;">
-                        <div class="carousel-caption">
-                            <h4>Slide {{slide.id}}</h4>
-                            <p>{{slide.text}}</p>
+<div oc-lazy-load="lists">
+    <div ng-controller="ListsCtrl" class="container">
+        <div class="row bloc"> <i class="fa fa-newspaper-o user"><span class="content iconText">Vos WeeshLists  Id:{{active}}</span></i>
+            <hr class="tall hr hr" />
+            <div class="row center bloc" style="box-shadow:none;">
+                <div class="col-md-12">
+                    <div style="height: 305px;">
+                        <div uib-carousel active=" active " interval="myInterval " no-wrap="noWrapSlides ">
+                            <div uib-slide ng-repeat="slide in slides track by slide.id " class="prout" index="slide.id "> <img ng-src="{{slide.image}} " style="margin:auto; ">
+                                <div class="carousel-caption prout">
+                                    <h4 style="color:white;">Slide {{slide.id}}</h4>
+                                    <p>{{slide.text}}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

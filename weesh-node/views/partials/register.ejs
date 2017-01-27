@@ -57,7 +57,7 @@
             <div layout-gt-sm="row">
                 <md-input-container class="md-block" flex-gt-sm>
                     <label>Email</label>
-                    <input required type="email" name="user.email" ng-model="user.email" minlength="10" ng-pattern="/^.+@.+\..+$/" />
+                    <input required type="email" name="user.email" ng-model="user.email" ng-pattern="/^.+@.+\..+$/" />
                     <div ng-messages="registerForm.user.emails.$error" role="alert">
                         <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']"> Votre adresse mail n'est pas valable. </div>
                     </div>
@@ -67,7 +67,7 @@
                 </div>
                 <md-input-container class="md-block" flex-gt-sm>
                     <label>Adresse (rue)</label>
-                    <input required type="text" name="user.address.street" ng-model="user.address.street" minlength="5">
+                    <input required type="text" name="user.address.street" ng-model="user.address.street">
                     <div ng-messages="registerForm.user.address.street.$error">
                         <div ng-message="required">Ce champ est obligatoire.</div>
                     </div>
@@ -76,7 +76,7 @@
             <div layout-gt-sm="row">
                 <md-input-container class="md-block" flex-gt-sm>
                     <label>Ville</label>
-                    <input required type="text" name="user.address.city" ng-model="user.address.city" minlength="10" ng-pattern="/^.+@.+\..+$/" />
+                    <input required type="text" name="user.address.city" ng-model="user.address.city" />
                     <div ng-messages="registerForm.user.address.city.$error" role="alert">
                         <div ng-message="required">Ce champ est obligatoire.</div>
                     </div>

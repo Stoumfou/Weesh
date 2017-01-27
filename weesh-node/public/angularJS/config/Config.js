@@ -3,6 +3,11 @@ angular.module('weesh').config([
     , '$stateProvider'
     , '$urlRouterProvider'
     , "$mdThemingProvider"
+
+
+
+
+    
     , function ($ocLazyLoadProvider, $stateProvider, $urlRouterProvider, $mdThemingProvider) {
         var controllerPath = "/public/angularJS/controllers/";
         //Config for ocLazyLoading
@@ -16,13 +21,17 @@ angular.module('weesh').config([
                 name: 'register', // home state
                 files: [controllerPath + 'AuthCtrl.js']
             }, {
-                name: 'nav',
-                files: [controllerPath + 'NavCtrl.js']
+                name: 'nav'
+                , files: [controllerPath + 'NavCtrl.js']
+            }, {
+                name: 'lists'
+                , files: [controllerPath + 'ListsCtrl.js']
+            }, {
+                name: 'products'
+                , files: [controllerPath + 'ProductsCtrl.js']
             }]
         });
-
         $mdThemingProvider.theme('default').primaryPalette('purple').accentPalette('orange');
-        
         $stateProvider.state('home', {
             url: '/home'
             , templateUrl: '/partials/home.ejs'

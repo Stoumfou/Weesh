@@ -64,7 +64,7 @@
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Email</label>
-                        <input required type="email" name="user.email" ng-model="user.email" minlength="10" ng-pattern="/^.+@.+\..+$/" />
+                        <input required type="email" name="user.email" ng-model="user.email" ng-pattern="/^.+@.+\..+$/" />
                         <div ng-messages="registerForm.user.emails.$error" role="alert">
                             <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']"> Votre adresse mail n'est pas valable. </div>
                         </div>
