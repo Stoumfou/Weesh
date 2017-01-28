@@ -1,7 +1,22 @@
-angular.module('weesh', ['ui.bootstrap']).controller('AuthCtrl', [
+angular.module('weesh', ['ui.bootstrap', 'ngMaterial']).config(function ($compileProvider) {
+    $compileProvider.preAssignBindingsEnabled(true);
+}).controller('AuthCtrl', [
     '$scope'
     , '$state'
     , 'auth'
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     
@@ -14,16 +29,14 @@ angular.module('weesh', ['ui.bootstrap']).controller('AuthCtrl', [
             , 'email': 'patate@gmail.com'
             , 'password': 'pass'
             , 'gender': 'f'
+            , 'birthDate': 'new Date();'
             , 'address': {
                 'city': 'Boulogne'
                 , 'street': 'rue de sèvres'
                 , "zip": "92100"
             }
-            , birthDate: ''
         };
         $scope.user.birthDate = new Date();
-        $scope.minDate = new Date($scope.user.birthDate.getFullYear(), $scope.user.birthDate.getMonth() - 2, $scope.user.birthDate.getDate());
-        $scope.maxDate = new Date($scope.user.birthDate.getFullYear(), $scope.user.birthDate.getMonth() + 2, $scope.user.birthDate.getDate());
         $scope.register = function () {
             auth.register($scope.user).then(function success() {
                 $state.go('home');

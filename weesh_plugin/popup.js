@@ -222,6 +222,11 @@ $(document).ready(function () {
                     return false;
                 });
     
+                $('#ubaldiButton').on('click', function(){
+                    chrome.tabs.create({url: "http://www.ubaldi.com/"});
+                    return false;
+                });
+    
                 $('#connectButton').on('click', function(){
                     
                     $.ajax({

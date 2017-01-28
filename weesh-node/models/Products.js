@@ -10,6 +10,10 @@ var ProductSchema = new mongoose.Schema({
         type: String,
         required: [ true, 'Product name is missing.']
     },
+    image: {
+        type: String,
+        required: [ true, 'Product image is missing.']
+    },
     provider: [{
         name: String,
         productUrl: String

@@ -16,14 +16,14 @@
 </div>
 <div oc-lazy-load="lists">
     <div ng-controller="ListsCtrl" class="container">
-        <div class="row bloc"> <i class="fa fa-newspaper-o user"><span class="content iconText">Vos WeeshLists  Id:{{active}}</span></i>
+        <div class="row bloc"> <i class="fa fa-newspaper-o user"><span class="content iconText">Vos WeeshLists</span></i>
             <hr class="tall hr hr" />
             <div class="row center bloc" style="box-shadow:none;">
                 <div class="col-md-12">
                     <div style="height: 305px;">
                         <div uib-carousel active=" active " interval="myInterval " no-wrap="noWrapSlides ">
-                            <div uib-slide ng-repeat="slide in slides track by slide.id " class="prout" index="slide.id "> <img ng-src="{{slide.image}} " style="margin:auto; ">
-                                <div class="carousel-caption prout">
+                            <div uib-slide ng-repeat="slide in slides track by slide.id " index="slide.id "> <img ng-src="{{slide.image}} " style="margin:auto; ">
+                                <div class="carousel-caption">
                                     <h4 style="color:white;">Slide {{slide.id}}</h4>
                                     <p>{{slide.text}}</p>
                                 </div>

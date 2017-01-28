@@ -22,9 +22,11 @@ function partA() {
     var a = document.getElementById('s-results-list-atf');
     //var b = document.getElementsByClassName('a-size-base a-color-price s-price a-text-bold');
     var c = document.getElementById('submit.add-to-cart-announce');
+    var ubaldi = document.getElementById('main-liste-articles');
     
     if(a!=null) amazonPutButton(a);
     if(c!=null) addBigButton(c);
+    if(ubaldi!=null) ubaldiButton(ubaldi);
     
     
     //Google search
@@ -35,6 +37,41 @@ function partA() {
     //if(b!=null) addManyButtons(b);
     
 }
+
+function ubaldiButton(a) {
+    listImg=[];
+    listNames=[];
+    listUrl=[];
+    listPrices=[];
+    
+    var count = a.children.length;
+    var listLi = a.getElementsByClassName('la-article zc-parent clearfix');
+    
+    console.log(count);
+    for(var i = 0 ; i < count ; i++) {
+        if(typeof listLi[i] == "undefined") continue;
+        var img = listLi[i].getElementsByClassName('img-placeholder img-defer img-ratio-cc la-img');
+        var price = listLi[i].getElementsByClassName('prix rebours-prix rebours-inited');
+        var link = img[0].getElementsByTagName('a')[0].href;
+
+        img = img[0].getElementsByTagName('img');
+        listNames.push(img[0].alt);
+        if (typeof img[0].dataset.src != "undefined") listImg.push(img[0].dataset.src);
+        if (typeof img[0].src != "undefined") listImg.push(img[0].src);
+
+        listUrl.push(link);
+        listPrices.push(price[0].dataset.prixVente);
+
+        addButton(listImg.length-1,listLi[i]
+                  .getElementsByClassName('rebours-clignote la-prix-inner clignote-inited')[0]);
+    }
+    
+    console.log(listNames);
+    console.log(listImg);
+    console.log(listUrl);
+    console.log(listPrices);
+}
+
 
 function amazonPutButton(a){
     listImg=[];
@@ -48,7 +85,11 @@ function amazonPutButton(a){
     
     for(var i = 0 ; listImg.length < count ; i++) {
         
-        if(typeof listLi[i].getElementsByTagName('img')[0] != "undefined") {
+        if(typeof listLi[i].getElementsByTagName('img')[0] != "undefined"
+          && typeof listLi[i].getElementsByTagName('h2')[0] != "undefined"
+          && typeof listLi[i].getElementsByTagName('a')[0] != "undefined"
+          ) {
+            
             listImg.push(listLi[i].getElementsByTagName('img')[0].src);
             listNames.push(listLi[i].getElementsByTagName('h2')[0].innerHTML);
             listUrl.push(listLi[i].getElementsByTagName('a')[0].href);
