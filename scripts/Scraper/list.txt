@@ -1,4 +1,6 @@
-﻿Amazon
+﻿// Avec soit ean, isbn, marque + model
+
+Amazon
 CDiscount
 Fnac
 Castorama
