@@ -1,20 +1,12 @@
 ﻿Amazon
 CDiscount
 Fnac
-Leroy Merlin
-
 Castorama
 La Redoute
 PriceMinister
-
-
-Darty
-
+Darty   // fait
 Tesco
-
 Ubaldi
-
 LDLC
-
 GrosBill
 Rueducommerce
