@@ -22,11 +22,11 @@ module.exports = {
     	var values = [];
     	var itemsREQUEST = "INSERT IGNORE INTO items(";
     	for(var k in data){
-            if(k=="isbn" || k=="ean" || k=="brand" || k=="model" || k=="title" || k=="description" || k=="image" || k=="tags")
+            if(k=="isbn" || k=="ean" || k=="brand" || k=="model" || k=="title" || k=="description" || k=="image" || k=="tags" || k=="url")
     		{
                 itemsREQUEST += k;
                 itemsREQUEST += ",";        
-                values.push("'"+data[k].replace("\'", "")+"'");
+                values.push("'"+data[k].replace("\'", "").replace("'", "\'").replace("'", "''")+"'");
             }
         }
 
