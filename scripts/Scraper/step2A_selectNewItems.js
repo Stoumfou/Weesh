@@ -1,5 +1,5 @@
 var _mysql = require('mysql');
-var _saver = require('./step1B_saveSourcesAsItems');
+var _saver = require('./step2B_saveItemsAsInstances');
 
 
 module.exports = {
@@ -19,20 +19,16 @@ module.exports = {
     	database: DATABASE,
     });
 
-        var realUrl;
-
         mysql.connect();
 
         // On lit la table pour récupérer les URLs des nouveaux objets ajoutés depuis le plug-in
-        var selectUrls = "SELECT url FROM new_sources";
+        var selectUrls = "SELECT ean FROM items WHERE ean IS NOT NULL";
 
         mysql.query(selectUrls, function(error, data, fields){
             if(error) throw error;
             for(entry in data) 
                 {
-                    realUrl = data[entry].url.split('ref')[0];
-                    console.log(realUrl); 
-                    _saver.parseAndWriteDB(realUrl);
+                    _saver.parseAndWriteDB(data[entry].ean);
                 }
         });
 
