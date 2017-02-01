@@ -24,16 +24,18 @@ module.exports = {
         mysql.connect();
 
         // On lit la table pour récupérer les URLs des nouveaux objets ajoutés depuis le plug-in
-        var selectUrls = "SELECT url FROM new_sources";
+        var selectUrls = "SELECT url, weeshlistid FROM new_sources";
 
         mysql.query(selectUrls, function(error, data, fields){
-            if(error) throw error;
-            for(entry in data) 
+            if(error) console.log('\x1b[31m%s\x1b[0m',error);
+            else{
+                for(entry in data) 
                 {
-                    realUrl = data[entry].url.split('ref')[0];
+                    realUrl = data[entry].url.split('?')[0];
                     console.log(realUrl); 
-                    _saver.parseAndWriteDB(realUrl);
+                    _saver.parseAndWriteDB(realUrl, data[entry].weeshlistid);
                 }
+            }          
         });
 
 

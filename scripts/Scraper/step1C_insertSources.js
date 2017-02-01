@@ -1,8 +1,8 @@
 var _mysql = require('mysql');
-var errorCount = 0;
+var createLink = require('./step1D_linkWL')
 
 module.exports = {
-  connectToSave: function (metadata) {
+  connectToSave: function (metadata, id) {
 
   		var HOST = 'localhost';
 		var PORT = 3306;
@@ -21,6 +21,9 @@ module.exports = {
     	mysql.connect();
     	var values = [];
     	var itemsREQUEST = "INSERT IGNORE INTO items(";
+
+        var urlQ = "";
+
     	for(var k in data){
             if(k=="isbn" || k=="ean" || k=="brand" || k=="model" || k=="title" || k=="description" || k=="image" || k=="tags" || k=="url")
     		{
@@ -28,6 +31,7 @@ module.exports = {
                 itemsREQUEST += ",";        
                 values.push("'"+data[k].replace("\'", "").replace("'", "\'").replace("'", "''")+"'");
             }
+            if(k=="url") urlQ = data[k].replace("\'", "").replace("'", "\'").replace("'", "''");
         }
 
         itemsREQUEST = itemsREQUEST.substring(0, itemsREQUEST.length - 1) + ") VALUES (";
@@ -37,12 +41,22 @@ module.exports = {
 
         mysql.query(itemsREQUEST, function (error, results, fields) {
             if(error) {
-                console.log('\x1b[31m%s\x1b[0m', "JOB 1C : "+error);
-                errorCount++;
+                console.log('\x1b[31m%s\x1b[0m', "JOB 1C_a : "+error);
             }
                 //console.log('\x1b[32m%s\x1b[0m', data.url + " was saved!"); // Ecrit en vert GJ
-            });
+        });
+
+        // Récupération de l'item_id via URL
+        var linkREQUEST = "SELECT id FROM items WHERE url = '"+urlQ+"'";
+        console.log('\x1b[32m%s\x1b[0m', linkREQUEST);
+        mysql.query(linkREQUEST, function (error, results, fields) {
+            if(error) {
+                console.log('\x1b[33m%s\x1b[0m', "JOB 1C_b : "+error);
+            }
+                //console.log('\x1b[32m%s\x1b[0m', data.url + " was saved!"); // Ecrit en vert GJ
+            else createLink.continue(results[0].id, id);
+        });
+
         mysql.end();
-        return errorCount;
     }
 }
