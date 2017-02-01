@@ -44,6 +44,9 @@ module.exports = {
                 console.log('\x1b[31m%s\x1b[0m', "JOB 1C_a : "+error);
             }
                 //console.log('\x1b[32m%s\x1b[0m', data.url + " was saved!"); // Ecrit en vert GJ
+            else{
+                
+            }
         });
 
         // Récupération de l'item_id via URL

@@ -25,7 +25,5 @@ module.exports = {
                 //console.log('\x1b[32m%s\x1b[0m', data.url + " was saved!"); // Ecrit en vert GJ
             else console.log(results);
         });
-
-        mysql.end();
     }
 }
