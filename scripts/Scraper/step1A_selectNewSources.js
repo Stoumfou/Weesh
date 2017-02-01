@@ -36,6 +36,8 @@ module.exports = {
                 }
         });
 
+
+        console.log('\x1b[32m%s\x1b[0m', "Job 1 (NEW ENTRIES) finished");
     	mysql.end();
     }
 };

@@ -1,5 +1,5 @@
 var _mysql = require('mysql');
-
+var errorCount = 0;
 
 module.exports = {
   connectToSave: function (metadata) {
@@ -36,10 +36,13 @@ module.exports = {
         console.log(itemsREQUEST);
 
         mysql.query(itemsREQUEST, function (error, results, fields) {
-            if(error) throw error;
-                console.log('\x1b[32m%s\x1b[0m', data.url + " was saved!"); // Ecrit en vert GJ
+            if(error) {
+                console.log('\x1b[31m%s\x1b[0m', "JOB 1C : "+error);
+                errorCount++;
+            }
+                //console.log('\x1b[32m%s\x1b[0m', data.url + " was saved!"); // Ecrit en vert GJ
             });
-
         mysql.end();
+        return errorCount;
     }
 }

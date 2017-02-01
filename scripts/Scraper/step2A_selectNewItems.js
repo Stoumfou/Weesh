@@ -1,7 +1,6 @@
 var _mysql = require('mysql');
 var _saver = require('./step2B_saveItemsAsInstances');
 
-
 module.exports = {
   saveNewSources: function () {
 
@@ -31,6 +30,8 @@ module.exports = {
                     _saver.parseAndWriteDB(data[entry].ean);
                 }
         });
+
+        console.log('\x1b[32m%s\x1b[0m', "Job 2 (PRICE SCRAPER) finished");
 
     	mysql.end();
     }

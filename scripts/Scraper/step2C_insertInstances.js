@@ -1,6 +1,5 @@
 var _mysql = require('mysql');
 
-
 module.exports = {
   connectToSave: function (metadata) {
 
@@ -20,7 +19,7 @@ module.exports = {
     	var data = JSON.parse(metadata); // On parse l'objet reçu en JSON
     	mysql.connect();
 
-        console.log(data);
+        //console.log(data);
 
     	var values = [];
     	var itemsREQUESTS = [];
@@ -29,17 +28,21 @@ module.exports = {
         //INSERT INTO items_instances (item_id, price) VALUES ((SELECT id FROM items WHERE items.ean=8806088243962), 100)
     	for(var i in data.sellerArray) {
             itemsREQUESTS.push(base);
-            itemsREQUESTS[i] += "'"+data.sellerArray[i]+"','"+data.priceArray[i]+"','"+data.dateArray[i]+"');";           
+            itemsREQUESTS[i] += "'"+data.sellerArray[i].replace("\'", "").replace("'", "\'").replace("'", "''")
+            +"','"+data.priceArray[i].replace("\'", "").replace("'", "\'").replace("'", "''")
+            +"','"+data.dateArray[i].replace("\'", "").replace("'", "\'").replace("'", "''")+"');";           
             callQ(mysql,itemsREQUESTS[i],data.ean);
         }        
-
+        
         mysql.end();
     }
 }
 
 function callQ(sql, str, ean){
     sql.query(str, function (error, results, fields) {
-        if(error) throw error;
-            console.log('\x1b[32m%s\x1b[0m', ean + " was saved!"); // Ecrit en vert GJ
+        if(error) {
+            console.log('\x1b[31m%s\x1b[0m',"JOB 2C : "+error);
+        }
+            // console.log('\x1b[32m%s\x1b[0m', ean + " was saved!"); // Ecrit en vert GJ
         })
 }
