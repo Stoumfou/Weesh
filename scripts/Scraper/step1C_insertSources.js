@@ -25,7 +25,7 @@ module.exports = {
         var urlQ = "";
 
     	for(var k in data){
-            if(k=="isbn" || k=="ean" || k=="brand" || k=="model" || k=="title" || k=="description" || k=="image" || k=="tags" || k=="url")
+            if(k=="isbn" || k=="ean" || k=="brand" || k=="model" || k=="title" || k=="price" || k=="description" || k=="image" || k=="tags" || k=="url")
     		{
                 itemsREQUEST += k;
                 itemsREQUEST += ",";        

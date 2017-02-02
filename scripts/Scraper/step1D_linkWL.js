@@ -18,7 +18,7 @@ module.exports = {
 	});
     	mysql.connect();
 
-    	var request = "INSERT INTO items_weesh_lists(item_id, weesh_list_id) VALUES ("+iid+","+wid+");";
+    	var request = "INSERT IGNORE INTO items_weesh_lists(item_id, weesh_list_id) VALUES ("+iid+","+wid+");";
         console.log('\x1b[32m%s\x1b[0m', request);
         mysql.query(request, function (error, results, fields) {
             if(error) console.log('\x1b[31m%s\x1b[0m', "JOB 1D : "+error);
