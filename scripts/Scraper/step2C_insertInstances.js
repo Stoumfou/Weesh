@@ -23,7 +23,7 @@ module.exports = {
 
     	var values = [];
     	var itemsREQUESTS = [];
-        var base = "INSERT IGNORE INTO items_instances (item_id, seller, price, lastdate) VALUES ((SELECT id FROM items WHERE items.ean="+data.ean+"),";
+        var base = "INSERT IGNORE INTO item_instances (item_id, seller, price, lastdate) VALUES ((SELECT id FROM items WHERE items.ean="+data.ean+"),";
         
         //INSERT INTO items_instances (item_id, price) VALUES ((SELECT id FROM items WHERE items.ean=8806088243962), 100)
     	for(var i in data.sellerArray) {
